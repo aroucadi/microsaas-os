@@ -19,46 +19,27 @@ Traditional AI coding assistants eagerly write thousands of lines of boilerplate
 
 **Micro-SaaS Founder OS** enforces an unyielding discipline: **Zero code is generated until an opportunity survives adversarial red teaming, customer discovery, and willingness-to-pay validation.**
 
+> **The Central Axiom:** Evidence before specifications. Specifications before code. Working customer value before feature expansion.
+
 ---
 
 ## 🏛️ System Architecture
 
-Micro-SaaS Founder OS organizes the startup journey into a 9-stage disciplined pipeline orchestrated by `microsaas-hub` and executed across 7 specialized Antigravity skills.
+Micro-SaaS Founder OS organizes the startup journey into a disciplined pipeline orchestrated by `microsaas-hub` and executed across 7 specialized Antigravity skills.
+
+### The 8-Step Pre-Code Operating Protocol
+
+Before a single line of software is written, every project executes this Lean/YC-oriented sequence:
 
 ```mermaid
 flowchart TD
-    subgraph Discovery & Research
-        S1["Stage 1: Opportunity Hunting<br/><code>microsaas-discovery</code>"] -->|"Score >= 24/35"| S2["Stage 2: Competitive Intelligence & Moat Audit<br/><code>microsaas-research</code>"]
-        S1 -.->|"Score < 24"| DROP1["❌ REJECT (Drop Idea)"]
-        S2 -->|"Moat >= 18/30 + Red Team Clear"| S3["Stage 3: Customer Discovery & WTP Validation<br/><code>microsaas-validation</code>"]
-        S2 -.->|"Fatal Red Team Trap"| DROP2["🔴 REJECT / NO-GO"]
-    end
-
-    subgraph Product & Definition
-        S3 -->|"Commitment Gate Passed"| S4["Stage 4: PR/FAQ & Spec-Driven Development (SDD)<br/><code>microsaas-product</code>"]
-        S3 -.->|"Fluff / Zero WTP"| DROP3["🔄 PIVOT or KILL"]
-        S4 --> S5["Stage 5: High-Converting Smoke Page<br/>(Value Prop, Pricing, CTA)"]
-    end
-
-    subgraph Build & Launch
-        S5 --> S6["Stage 6: Minimal MVP Build<br/>(&le; 3 Must-Have Features)"]
-        S6 --> S7["Stage 7: Multi-Channel Launch & Viral Video<br/><code>microsaas-distribution</code>"]
-        S7 --> S8["Stage 8: Checkout & True Net Cash Accounting"]
-    end
-
-    subgraph Audit & Lifecycle
-        S8 --> S9["Stage 9: 30-Day Performance Audit<br/><code>microsaas-metrics</code>"]
-        S9 -->|"Traction >= Threshold"| DD["🚀 DOUBLE DOWN"]
-        S9 -->|"Mixed Signal"| PV["🔄 PIVOT"]
-        S9 -->|"0 Traction / Negative Margin"| KL["🛑 KILL (Cut Cloud Burn)"]
-    end
-
-    HUB[("🧠 microsaas-hub<br/>State Manager & Gatekeeper<br/><code>.microsaas/state.json</code>")] <---> S1
-    HUB <---> S2
-    HUB <---> S3
-    HUB <---> S4
-    HUB <---> S7
-    HUB <---> S9
+    S1["Step 1: Customer & Problem Discovery<br/><code>The Mom Test (Past Behavior)</code>"] --> S2["Step 2: Riskiest Assumption Test (RAT)<br/><code>Concierge / Wizard of Oz / Smoke Test</code>"]
+    S2 --> S3["Step 3: Product Definition & Narrow ICP<br/><code>1-Sentence Pitch & Lightweight PR/FAQ</code>"]
+    S3 --> S4["Step 4: MVP Boundary & Development Appetite<br/><code>1 Core Workflow & 1-2 Wk Appetite</code>"]
+    S4 --> S5["Step 5: UI/UX Architecture & Anti-AI-Slop<br/><code>JTBD + Progressive Disclosure + Bespoke Tokens</code>"]
+    S5 --> S6["Step 6: Spec-Driven Architecture (Spec Kit)<br/><code>Walking Skeleton & Vertical Slices</code>"]
+    S6 --> S7["Step 7: Pre-Mortem & Kill Criteria Gate<br/><code>Top 3 Failure Modes & Reversal Conditions</code>"]
+    S7 --> S8["🚀 Step 8: Coding Begins<br/><code>Walking Skeleton ➔ First Customer Gate</code>"]
 ```
 
 ---
@@ -67,13 +48,13 @@ flowchart TD
 
 | Skill | Role & Domain | Primary Frameworks | Strict Output / Gate |
 | :--- | :--- | :--- | :--- |
-| [**`microsaas-hub`**](skills/microsaas-hub/) | Master Orchestrator & State Manager | Stage-Gate Process, Memory Persistence | Enforces evidence gates; manages `.microsaas/state.json` |
+| [**`microsaas-hub`**](skills/microsaas-hub/) | Master Orchestrator & State Manager | Stage-Gate, Pre-Mortem, Kill Criteria | Enforces gates, manages `.microsaas/`, stops bad builds |
 | [**`microsaas-discovery`**](skills/microsaas-discovery/) | Opportunity Hunting & Idea Scoring | 4 Archetypes, Complaint Mining, JTBD | Rubric $\ge 24/35$ to advance; kills low-signal ideas |
 | [**`microsaas-research`**](skills/microsaas-research/) | Competitive Moats & Red Teaming | Porter's 5 Forces, Moat Scorecard, Red Team | Moat $\ge 18/30$; exposes platform risk & incumbent traps |
-| [**`microsaas-validation`**](skills/microsaas-validation/) | Customer Discovery & Mom Test | Rob Fitzpatrick's Mom Test, Smoke Testing | Pre-registered 14-day falsification gates |
-| [**`microsaas-product`**](skills/microsaas-product/) | Amazon PR/FAQ, Spec-Driven Dev (SDD) & Anti-AI-Slop Aesthetics | Working Backwards, MoSCoW ($\le 3$ feats), Anti-Slop UI Directives | Full GitHub Spec Kit (`spec.md`, `data-model.md`, `tasks.md`) with bespoke UI tokens |
+| [**`microsaas-validation`**](skills/microsaas-validation/) | Riskiest Assumption Testing & Evidence | RAT, Mom Test, Concierge/Wizard of Oz | Pre-registered pass/fail falsification gates |
+| [**`microsaas-product`**](skills/microsaas-product/) | PR/FAQ, Shape Up Appetite & Anti-AI-Slop UI | YC Principles, Walking Skeleton, Spec Kit | 1-Sentence Pitch, Walking Skeleton & vertical slices |
 | [**`microsaas-distribution`**](skills/microsaas-distribution/) | GTM, Viral Video & Programmatic SEO | Hook-Retain-Reward scripts, pSEO matrix | 3 viral video scripts + pSEO database architecture |
-| [**`microsaas-metrics`**](skills/microsaas-metrics/) | Unit Economics & Double Down / Kill | AARRR Pirate Metrics, Net Margin Accounting | 30-day decision memo: `DOUBLE DOWN`, `PIVOT`, or `KILL` |
+| [**`microsaas-metrics`**](skills/microsaas-metrics/) | North Star Metric & 30-Day Kill Switch | AARRR Pirate Metrics, Sean Ellis PMF, Net Margin | 30-day decision memo: `DOUBLE DOWN`, `PIVOT`, or `KILL` |
 
 ---
 
@@ -243,10 +224,12 @@ Also explore the [**40 Micro-SaaS Vetted Ideas Catalog**](docs/40_micro_saas_ide
 Copy-paste templates located in [`templates/`](templates/):
 * `opportunity_scoring_rubric.md`: 7-dimension opportunity evaluation (/35).
 * `competitive_audit_template.md`: Competitor matrix and 6-moat scorecard (/30).
+* `riskiest_assumption_test.md`: Riskiest Assumption Testing (RAT) and experiment selector.
 * `mom_test_script_template.md`: Customer discovery interview script.
-* `pr_faq_template.md`: Amazon-style press release and FAQ.
-* `spec_kit_sdd_template.md`: GitHub Spec Kit for Spec-Driven Development.
+* `pr_faq_template.md`: Amazon-style press release and FAQ with 1-sentence pitch.
+* `spec_kit_sdd_template.md`: GitHub Spec Kit for Spec-Driven Development with Walking Skeleton.
 * `frontend_aesthetics_anti_slop.md`: Anti-AI-slop design directives, typography pairings, and theme tokens.
+* `pre_mortem_and_kill_criteria.md`: Gary Klein Pre-Mortem (top 3 failure modes) and kill criteria.
 * `short_form_video_script_template.md`: Hook-Retain-Reward TikTok/Reels script.
 * `performance_review_template.md`: 30-day post-launch metrics review.
 

@@ -1,8 +1,21 @@
-# Amazon Working Backwards PR/FAQ Template
+# Lightweight PR/FAQ & Product Definition Template
+> **Methodology:** Amazon Working Backwards + Y Combinator Startup School
 
-## FOR IMMEDIATE RELEASE
+---
 
-### [Headline: Catchy, clear name describing the product and ultimate customer benefit]
+## 🎯 0. Core Strategic Definition (YC)
+
+* **The One-Sentence Product Pitch:**
+  > For **[Narrow Initial Customer Profile]** who struggles with **[acute, painful problem]**, our product delivers **[measurable customer outcome]** without **[frustrating status-quo compromise]**.
+* **Narrow Initial Customer Profile (ICP):** [e.g. Solo Shopify apparel founders generating $10k–$50k/mo, NOT "e-commerce merchants"]
+* **One Measurable Customer Outcome:** [e.g. Cuts weekly inventory reconciliation time from 4 hours to 90 seconds]
+* **Do Things That Don't Scale (Manual First):** [e.g. Founder manually onboard the first 10 customers via 1-on-1 Loom videos and manually verify their data]
+
+---
+
+## 📢 FOR IMMEDIATE RELEASE (Amazon Working Backwards)
+
+### [Headline: Name the product and ultimate customer benefit in plain language]
 #### [Subheadline: One sentence stating who it is for and why it matters]
 
 **[City, Date]** — Today, [Company / Product Name] announced the release of [Product], a new micro-tool designed to help [target audience] [solve primary frustration] in under [X seconds / minutes].
@@ -20,9 +33,9 @@ Until now, [target audience] had to [describe painful, messy workaround: e.g. sp
 
 ---
 
-## Customer Frequently Asked Questions (FAQ)
+## ❓ 5 Critical Customer FAQs
 
-1. **How is this different from [Competitor / Free Tool]?**
+1. **How is this different from [Competitor / Free Alternative]?**
    * [Answer highlighting the asymmetric speed, simplicity, or pricing advantage]
 2. **Do I need technical skills or complex setup to use this?**
    * [Answer explaining the 60-second time-to-value]

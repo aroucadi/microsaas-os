@@ -1,118 +1,127 @@
 ---
 name: microsaas-validation
 description: >-
-  Pre-code customer discovery, willingness-to-pay testing, and demand validation for micro-SaaS.
-  Use when testing whether people actually want an idea before writing software, running Mom Test
-  interviews, creating smoke test landing pages, or establishing pre-registered falsification gates.
+  Pre-code customer discovery, Riskiest Assumption Testing (RAT), and demand validation for micro-SaaS.
+  Use when testing whether people actually want an idea before writing software, identifying the single
+  assumption that could kill the business, running Mom Test interviews, designing Concierge/Wizard of Oz
+  MVPs, or establishing pre-registered falsification gates.
 ---
 
 # Micro-SaaS Idea Validation & Evidence Ledger (`microsaas-validation`)
 
-Use this skill to convert theoretical hypotheses into **observable commercial facts**. Never write a line of application code without tangible proof that target customers experience real pain and are willing to commit time, reputation, or money to solve it.
+Use this skill to convert theoretical hypotheses into **observable commercial facts**. Never write a single line of application code without tangible proof that target customers experience real pain and are willing to commit time, reputation, or money to solve it.
+
+> **Core Principle:** Validate demand before validating your ability to build software.
 
 ---
 
-## 🚫 The 3 Deadly Validation Sins
+## 🎯 Step 1: The Riskiest Assumption Test (RAT)
 
-1. **Asking for Opinions:** *"Do you think this is a good idea?"* (Everyone lies to be supportive).
-2. **Asking Future Hypotheticals:** *"Would you buy this if we built it for $20?"* (Future promises cost nothing).
-3. **Treating Vanity Signups as Customers:** An email waitlist is curiosity, not commercial validation.
+Before designing any experiment or writing code, isolate the single assumption that could kill the business if false.
+
+### The 4 Assumption Categories:
+1. **Problem Assumption:** Target users actually suffer from this pain repeatedly and care enough to fix it.
+2. **Willingness-to-Pay (WTP) Assumption:** Users actively allocate budget or spend money on workarounds (not just looking for free tools).
+3. **Distribution / Reachability Assumption:** We can cost-effectively reach these specific users where they already congregate.
+4. **Feasibility / Dependency Assumption:** The core technical value can be delivered without violating platform terms or relying on fragile hacks.
+
+### Separate Problem Fit from Solution Fit:
+* **Problem Validation:** *"Do you have this specific headache, and how much did your last workaround cost?"*
+* **Solution Validation:** *"Does our proposed approach actually solve it without introducing new friction?"*
+* **Warning:** A prospect having a problem does *not* automatically mean they want your proposed software solution. Always validate both.
 
 ---
 
-## 🛠️ The 3 Validation Paths (Choose Based on Archetype)
+## 🛠️ Step 2: Choose the Cheapest Meaningful Experiment
+
+Do not default to a rigid 14-day process. Select the experiment that directly tests your **Riskiest Assumption** with the least effort:
 
 ```text
-┌────────────────────────────────────────────────────────┐
-│               CHOOSE YOUR VALIDATION PATH              │
-├────────────────────────┬───────────────────────────────┤
-│ PATH A: THE MOM TEST   │ Best for: B2B micro-utilities │
-│ (5–8 Buyer Interviews) │ & workflow tools.             │
-│                        │ Focuses on past purchasing and│
-│                        │ active workaround costs.      │
-├────────────────────────┼───────────────────────────────┤
-│ PATH B: THE SMOKE TEST │ Best for: Self-serve B2C/B2B  │
-│ (Landing Page + Stripe)│ micro-SaaS & keepsakes.       │
-│                        │ Real traffic ➔ "Pre-Order" or │
-│                        │ "Buy Now" checkout click.     │
-├────────────────────────┼───────────────────────────────┤
-│ PATH C: THE CONCIERGE  │ Best for: AI extractors and   │
-│ (Manual Delivery)      │ niche parsing services.       │
-│                        │ Deliver the outcome manually  │
-│                        │ behind the scenes for 3 buyers│
-└────────────────────────┴───────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────┐
+│                      THE 5 VALIDATION EXPERIMENTS                      │
+├─────────────────────────┬──────────────────────────────────────────────┤
+│ 1. THE MOM TEST         │ Best for: B2B workflow & productivity tools. │
+│    (5–8 Interviews)     │ Validates past spending, frequency, and      │
+│                         │ active workarounds without pitching.         │
+├─────────────────────────┼──────────────────────────────────────────────┤
+│ 2. CONCIERGE MVP        │ Best for: Data extraction, auditing, and     │
+│    (Manual Delivery)    │ niche reporting. Manually deliver the result │
+│                         │ for 3–5 clients before writing any code.     │
+├─────────────────────────┼──────────────────────────────────────────────┤
+│ 3. WIZARD OF OZ MVP     │ Best for: AI tools & interactive workflows.  │
+│    (Simulated Backend)  │ Front-facing form / UI simulates automation, │
+│                         │ while founder manually executes the logic.   │
+├─────────────────────────┼──────────────────────────────────────────────┤
+│ 4. PAID PILOT / PRE-PAY │ Best for: High-ticket B2B micro-SaaS.        │
+│    (Letter of Intent)   │ Customer puts down a refundable deposit or   │
+│                         │ signs a 3-month pilot agreement.             │
+├─────────────────────────┼──────────────────────────────────────────────┤
+│ 5. SMOKE TEST PAGE      │ Best for: Self-serve B2C/B2B & keepsakes.    │
+│    (Real Price + Click) │ Landing page with exact price tag & Stripe   │
+│                         │ checkout click tracking (zero backend code). │
+└─────────────────────────┴──────────────────────────────────────────────┘
 ```
 
 ---
 
-## 📋 Path A: The Mom Test Protocol (Customer Discovery)
+## 📋 The Mom Test Protocol (Customer Discovery)
 
-When interviewing prospects, adhere strictly to Rob Fitzpatrick's rules:
+When speaking with potential users, adhere strictly to Rob Fitzpatrick's rules:
 1. **Talk about their life and past actions, not your idea.**
-2. **Ask about specific instances in the past, never generalities.**
-3. **Talk less, listen more.**
+2. **Ask about specific instances in the past, never generalities or hypotheticals.**
+3. **Listen 80% of the time, speak 20%.**
 
 ### The 5 Essential Mom Test Questions:
-1. *"When was the last time you had to deal with [problem]?"* (`[VERIFIED]` frequency).
-2. *"Can you walk me through what you did step-by-step to handle it?"* (`[VERIFIED]` workflow).
-3. *"What other solutions or tools did you try before settling on this?"* (`[VERIFIED]` active search).
+1. *"When was the last time you had to deal with [problem]?"* (`[VERIFIED]` recency & frequency).
+2. *"Can you walk me through what you did step-by-step to handle it?"* (`[VERIFIED]` workflow & friction).
+3. *"What other solutions or tools did you try before settling on this?"* (`[VERIFIED]` active search behavior).
 4. *"What do you dislike about your current setup, and what does that workaround cost you in time or money?"* (`[VERIFIED]` severity).
 5. *"In the past 12 months, have you paid for any software, freelancer, or tool to help fix this?"* (`[VERIFIED]` willingness to pay).
 
 ### The Commitment Ask at the End (Choose One):
-* **Time Commitment:** *"I’m testing an early prototype next Tuesday. Would you be willing to spend 15 minutes testing it with your live data?"*
-* **Reputation Commitment:** *"Would you introduce me to the colleague who handles this part of your workflow?"*
-* **Financial Commitment:** *"We are offering early access for $X. You can lock in founding pricing today."*
+* **Time Commitment:** *"I’m testing a manual workflow prototype next Tuesday. Would you spend 15 minutes reviewing it with your actual data?"*
+* **Reputation Commitment:** *"Would you introduce me to the colleague who makes the purchasing decision for this workflow?"*
+* **Financial Commitment:** *"We are onboarding 5 founding users at $X/month with direct priority support. Would you like to reserve a spot?"*
 
 ---
 
-## 🌐 Path B: The Smoke Test Protocol (Landing Page Experiment)
+## 🛑 Pre-Registered Falsification Gates
 
-For self-serve apps (keepsakes, consumer micro-tools, developer utilities):
-
-1. **Build a 1-Page High-Converting Landing Page (Zero backend):**
-   * Clear headline stating the outcome in 5 seconds (StoryBrand Grunt Test).
-   * Visual mockup or interactive preview (using static images or mock data).
-   * Transparent pricing with a direct **"Pre-Order"** or **"Get Instant Access"** button.
-2. **The "Paywall Moment":**
-   * Real Stripe Checkout modal capturing high-intent clicks.
-   * If live software is pending: *"We are onboarding early users in batches. Your card has not been charged—we'll notify you in 48 hours when your spot opens."*
-3. **Traffic Test:**
-   * Drive 200–500 targeted visitors via Reddit, Twitter/X, or short-form video.
-   * Target Benchmark: **$\ge 3\%$ conversion rate on high-intent click-through**.
-
----
-
-## 🛑 Pre-Registered 14-Day Falsification Gates
-
-To prevent endless validation without clarity, pre-register exact failure conditions in `.microsaas/state.json`:
+Before spending money on ads or hours on interviews, pre-register the exact pass/fail criteria in `.microsaas/state.json`:
 
 ```markdown
-# 14-Day Validation Plan & Stop Gates
+# Riskiest Assumption & Falsification Plan
 
-- **Experiment Type:** [Path A: Interviews / Path B: Smoke Test / Path C: Concierge]
-- **Target Audience:** [Exact role/community]
-- **Outreach / Traffic Quota:** [e.g. 25 outreaches OR 300 page visitors]
+- **Riskiest Assumption:** [e.g., Shopify store owners will pay $29/mo for automated stock alerts]
+- **Chosen Experiment:** [Mom Test / Concierge / Wizard of Oz / Smoke Page / Paid Pilot]
+- **Sample Size / Target Quota:** [e.g., 8 interviews conducted OR 200 targeted visitors]
 
-### Pre-Registered Gates:
-- **Gate 1 (Day 5 - Initial Signal):**
-  - PASS: [e.g. $\ge 3$ interview bookings OR $\ge 5\%$ click-through rate]
-  - FAIL: [< threshold] ➔ Action: Audit hook & copy.
-- **Gate 2 (Day 10 - Commercial Intent):**
-  - PASS: [e.g. $\ge 2$ prospects confirm paying for past solutions OR $\ge 5$ pre-orders]
-  - FAIL: [< threshold] ➔ Action: Re-evaluate price/value equation.
-- **Gate 3 (Day 14 - Definitive Go/No-Go):**
-  - PASS: [e.g. $\ge 1$ paid pre-order / paid concierge client closed]
-  - FAIL: Zero financial commitments. ➔ Action: **ABANDON OR PIVOT IMMEDIATELY**.
+### Pass / Fail Falsification Thresholds:
+- **PASS Criteria:** [e.g., At least 3 prospects show proof of paying for alternatives AND 2 agree to a paid pilot]
+- **FAIL Criteria:** [e.g., Prospects claim interest but zero show past spending or commit to trial]
+- **Action on Fail:** Stop development immediately. Revisit problem discovery or pivot ICP.
 ```
+
+---
+
+## 📈 Post-Beta Signal: Sean Ellis 40% Test
+
+Once early users experience the core workflow (via Concierge, Wizard of Oz, or initial Walking Skeleton), ask:
+> *"How would you feel if you could no longer use this product?"*
+> 1. Very disappointed
+> 2. Somewhat disappointed
+> 3. Not disappointed (it isn't really that useful)
+> 4. N/A – I no longer use it
+
+*Benchmark:* If **$\ge 40\%$** answer **"Very disappointed"**, you have early signal of product-market fit. If $< 40\%$, do not scale marketing—iterate on the core workflow.
 
 ---
 
 ## 📄 Required Output Artifact
 
 Save all observable outcomes in `validation-ledger.md`:
-* List of interviews conducted or smoke test traffic metrics.
+* The isolated Riskiest Assumption and chosen experiment.
 * Exact quotes, past tools used, and dollars previously spent by prospects.
-* Gate Results: Did it pass Gate 1, 2, and 3?
-* Final Recommendation: **PROCEED TO PRODUCT / PIVOT / ABANDON**.
+* Gate Results: Did the experiment meet the pre-registered PASS criteria?
+* Final Recommendation: **PROCEED TO PRODUCT / PIVOT / KILL**.
 * Human Sign-Off Checkpoint.

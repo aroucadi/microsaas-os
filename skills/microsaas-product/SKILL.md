@@ -1,161 +1,137 @@
 ---
 name: microsaas-product
 description: >-
-  Product strategy, Amazon PR/FAQ, MVP definition, Spec-Driven Development (SDD), and distinctive
-  anti-AI-slop UI/UX design architecture for micro-SaaS. Use when defining product scope, writing PR/FAQs,
-  designing lean user journeys, establishing bespoke web/mobile aesthetics, and creating complete
-  GitHub Spec Kit specifications before coding.
+  Product strategy, PR/FAQ, MVP definition, Spec-Driven Development (SDD), and UI/UX design architecture
+  for micro-SaaS. Combines YC principles (Narrow ICP, Do Things That Don't Scale), Amazon Working Backwards,
+  Shape Up Appetite, Walking Skeletons, and anti-AI-slop frontend aesthetics to define airtight specifications.
 ---
 
-# Micro-SaaS Product Strategy, UI/UX Aesthetics & Spec-Driven Development (`microsaas-product`)
+# Micro-SaaS Product Strategy, UI/UX Architecture & Spec-Driven Development (`microsaas-product`)
 
-Use this skill to design the product from the customer's desired outcome backwards, eliminate feature bloat, craft distinctive **anti-AI-slop** web and mobile interfaces, and produce airtight **Spec-Driven Development (SDD)** artifacts for AI coding agents.
+Use this skill to define the product from the customer's desired outcome backwards, eliminate feature bloat, craft distinctive **anti-AI-slop** interfaces, and produce actionable **Spec-Driven Development (SDD)** artifacts for AI coding agents.
 
----
-
-## 📦 Part 1: Amazon Working Backwards (PR/FAQ)
-
-Before writing any code or technical architecture, author a 1-page **Press Release & FAQ (PR/FAQ)** as if the product has already successfully launched.
-
-### Structure of the PR/FAQ:
-1. **Headline:** Name the product in a way the target customer immediately understands.
-2. **Subheadline:** One sentence describing who it is for and the primary benefit.
-3. **Summary Paragraph:** City, Date — Briefly state what the product is and why it was released.
-4. **The Problem:** Describe the specific, painful frustration customers had before this product existed.
-5. **The Solution (How It Works):** Explain simply how the product solves the problem in 3 steps.
-6. **Customer Quote:** A realistic quote from an early customer describing how much time, money, or stress they saved.
-7. **Call to Action:** Where to get it, pricing, and how to get started in 60 seconds.
-8. **Customer FAQ:** 5 questions addressing pricing, data privacy, integrations, refunds, and technical requirements.
+> **Core Philosophy:** Evidence before specifications. Specifications before code. Working customer value before feature expansion.
 
 ---
 
-## 🎯 Part 2: Jobs To Be Done (JTBD) & MoSCoW MVP Boundary
+## 🧭 Part 1: Product Definition (YC & Amazon Working Backwards)
 
-Define the core job:
-> *"When **[trigger situation]**, I want to **[perform action]**, so I can **[achieve desired outcome]**."*
+Define the product with razor-sharp clarity before opening an editor or configuring databases.
 
-### The Strict MoSCoW MVP Rule:
-A micro-SaaS MVP must contain **at most 3 core capabilities**. Everything else is discarded for V1.
+### 1. The One-Sentence Product Pitch
+Every micro-SaaS must be expressible in one unambiguous sentence:
+> **"For [specific customer] who struggles with [specific problem], our product delivers [measurable outcome] without [existing frustration]."**
 
-* **MUST HAVE (Strictly $\le 3$ items):** The absolute minimum technical path needed for the user to experience the "Aha!" moment and pay.
-* **SHOULD HAVE:** Important features reserved for V1.1 (after first 10 paying customers).
-* **COULD HAVE:** Nice-to-have ideas logged in the backlog.
-* **WON'T HAVE (This Sprint):** Features explicitly banned from the MVP (e.g. multi-user teams, dark mode toggle, complex custom settings, native mobile apps, custom dashboard widgets).
+### 2. YC Core Principles:
+* **Narrow Initial Customer Profile (ICP):** Target an extremely specific first customer segment (e.g., *"Shopify clothing brands doing $20k-$100k/mo"*, not *"E-commerce businesses"*).
+* **Make Something People Want:** Focus on one painful problem and one measurable outcome.
+* **Do Things That Don't Scale (Paul Graham):** Initially, manually onboard users, handle exceptions yourself, and deliver results by hand before writing automated background workers.
+
+### 3. Lightweight PR/FAQ (Amazon Working Backwards):
+Author a 1-page artifact capturing the customer perspective:
+1. **Headline & Subhead:** Product name and primary benefit in plain English.
+2. **Summary:** Who it is for and why it was created.
+3. **The Problem:** The acute frustration customers faced before this existed.
+4. **The Solution (The 3-Step Journey):** How the customer gets the result in 3 intuitive steps.
+5. **Customer Quote:** A realistic testimonial highlighting time, stress, or money saved.
+6. **5 Critical FAQs:** Direct answers to pricing, data privacy, integrations, refunds, and technical requirements.
 
 ---
 
-## 🎨 Part 3: Distinctive UI/UX Architecture & Anti-AI-Slop Aesthetics (Web & Mobile)
+## 🎯 Part 2: MVP Scoping — Core Workflow & Shape Up Appetite
 
-> **Mandate:** AI coding assistants tend to converge toward generic, "on-distribution" outputs—resulting in predictable, lifeless "AI slop" interfaces (generic Inter fonts, purple-on-white gradients, and cookie-cutter 3-card grids).  
-> **Reference:** See [`references/frontend_aesthetics_anti_slop.md`](references/frontend_aesthetics_anti_slop.md) for full design archetypes, token recipes, and motion curves.
+> **An MVP is the smallest product that delivers a complete customer outcome, not the smallest collection of features.**
 
-When creating any UI, landing page, web dashboard, or mobile screen, enforce these 5 design directives:
+### 1. The Core Value-Delivery Workflow:
+Define the single unbroken path from user trigger to delivered outcome:
+```text
+[User Trigger / Input] ──▶ [Core Engine Processing] ──▶ [Immediate Value Delivered]
+```
+If a proposed capability does not sit directly on this path, it is discarded for V1.
 
-### 1. Distinctive Typography Pairings (Banish Generic Fonts)
-* **Never use:** `Inter`, `Roboto`, `Arial`, or generic `system-ui`. Do not reflexively default to `Space Grotesk`.
-* **Select a high-character pairing suited to the product domain:**
+### 2. Shape Up Development Appetite:
+Before coding, set a strict development time budget (e.g., **1 to 2 weeks maximum solo build**). Scope is tailored to fit the appetite—the appetite is never extended to fit the scope.
+
+### 3. Scoping Boundaries:
+* **MUST HAVE (Strictly $\le 3$ core capabilities):** The absolute minimum needed to deliver the complete core workflow and capture payment.
+* **WON'T HAVE IN V1 (Explicitly Banned Scope):**
+  * ❌ No multi-user teams, workspaces, or custom role-based access.
+  * ❌ No custom dark mode toggle or theme pickers.
+  * ❌ No AI chatbot if static inputs or structured forms suffice.
+  * ❌ No custom authentication if magic links or Google OAuth suffice.
+  * ❌ No complex analytics dashboards when a simple email summary delivers value.
+
+---
+
+## 🎨 Part 3: UI/UX Architecture & Anti-AI-Slop Aesthetics
+
+> **Design Principle:** Don't Make Me Think (Steve Krug). A fast, obvious, clear interface is always more valuable than superficial visual complexity.
+
+### 1. Usability First:
+* **Jobs-to-be-Done (JTBD):** Design every screen around what the user is trying to accomplish, not what backend features you want to expose.
+* **One Primary CTA:** Every important screen must have one obvious next action. Avoid competing buttons of equal visual weight.
+* **Progressive Disclosure:** Show only the essentials needed for the current step. Hide advanced configuration in collapsible sections or post-onboarding settings.
+
+### 2. Anti-AI-Slop Frontend Aesthetics (Web & Mobile):
+AI coding assistants naturally converge to generic, lifeless outputs (Inter font, purple-on-white gradients, cookie-cutter 3-card grids). Enforce these aesthetic directives:
+
+* **Distinctive Typography Pairings (Banish Generic Fonts):**
+  * *Banned:* `Inter`, `Roboto`, `Arial`, system fonts. Do not default to `Space Grotesk`.
   * *DevTools & Technical:* `Syne` or `Cabinet Grotesk` (Headings) + `Plus Jakarta Sans` (Body) + `JetBrains Mono` (Code).
-  * *Fintech & Trust:* `Clash Display` or `Archivo` (Headings) + `Switzer` or `General Sans` (Body).
   * *Warm Editorial & Keepsakes:* `Instrument Serif` (Headings) + `Satoshi` or `Newsreader` (Body) + `DM Mono`.
-  * *High-Energy SaaS:* `Outfit` or `Cabinet Grotesk` (Headings) + `Figtree` (Body).
-* **Implementation:** Use fluid typography (`clamp()`) and tight tracking (`tracking-tight` / `-0.03em`) on headings.
+  * *Fintech & Security:* `Clash Display` or `Archivo` (Headings) + `Switzer` or `General Sans` (Body).
+* **Cohesive Theme Tokens:** Commit to a specific palette (*Obsidian & Phosphor*, *Warm Atelier*, *Midnight Cobalt*, or *Neo-Brutalist*).
+* **Atmospheric Depth:** Layer subtle ambient lighting (`radial-gradient`), 28px masked micro-grids, or warm paper texture with subtle 1px rim lighting (`inset 0 1px 0 rgba(255, 255, 255, 0.08)`).
+* **Orchestrated Motion:** Pure CSS staggered reveals on page load (`revealUp` with `80ms` delays and snappy `cubic-bezier(0.16, 1, 0.3, 1)` easing).
+* **Mobile Ergonomics:** Pinned lower-third CTA in the thumb zone, sliding bottom sheets instead of centered modals, and minimum $44 \times 44\text{px}$ touch targets.
 
-### 2. Cohesive Color Themes & Dominant Accents
-* **Never use:** The clichéd purple/indigo gradient on flat white.
-* **Commit to a specific aesthetic archetype:**
-  * *Obsidian & Phosphor:* `#090a0f` canvas, `#11131b` surface, `#00ff88` emerald accent, `#00b4d8` secondary.
-  * *Warm Atelier:* `#fbf9f5` warm paper canvas, `#ffffff` surface, `#1c1a17` espresso text, `#d94826` terracotta accent.
-  * *Midnight Cobalt:* `#0b0f19` deep slate, `#111827` surface, `#2563eb` royal cobalt accent.
-  * *Neo-Brutalist:* `#fafafa` canvas, `#000000` hard 2px borders, `#ffdf00` yellow accent, crisp hard shadows (`4px 4px 0px #000`).
-* **Tokens:** Define all colors as CSS custom properties (`--bg-canvas`, `--bg-surface`, `--accent-dominant`, `--text-primary`, `--border-subtle`).
-
-### 3. Atmospheric Backgrounds & Tactile Depth
-* Never allow screens to float on a flat solid `#ffffff` or flat `#000000`.
-* Add subtle ambient lighting with multi-stop radial gradients:
-  ```css
-  radial-gradient(circle at 50% 0%, rgba(var(--accent-rgb), 0.12) 0%, transparent 65%)
-  ```
-* Use subtle micro-grids (`28px 28px`), dot matrices, or grain textures masked by radial fades.
-* Elevate cards with tactile top rim lighting (`inset 0 1px 0 rgba(255, 255, 255, 0.08)`) and subtle borders rather than heavy blurry drop shadows.
-
-### 4. Orchestrated Staggered Entrance Motion
-* One well-orchestrated page reveal creates 10x more delight than scattered hover jumps.
-* Animate page elements sequentially using pure CSS keyframes with snappy cubic-bezier easing (`cubic-bezier(0.16, 1, 0.3, 1)`):
-  ```css
-  .reveal-item { opacity: 0; animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-  .stagger-1 { animation-delay: 80ms; }
-  .stagger-2 { animation-delay: 160ms; }
-  .stagger-3 { animation-delay: 240ms; }
-  ```
-* Provide tactile button compression: `active:scale-[0.98] transition-transform duration-100`.
-
-### 5. Mobile & Responsive Refinements
-* **Thumb-Zone Navigation:** Place primary CTAs and filters in the lower third of mobile screens.
-* **Bottom Sheets Over Modal Dialogs:** Slide up interactive dialogs from the bottom with drag handles on mobile ($<768\text{px}$).
-* **Touch Targets:** Minimum $44 \times 44\text{px}$ tap area for all interactive elements.
+*Reference Guide:* See [`references/frontend_aesthetics_anti_slop.md`](references/frontend_aesthetics_anti_slop.md).
 
 ---
 
-## 📐 Part 4: Spec-Driven Development (GitHub Spec Kit Protocol)
+## 📐 Part 4: Spec-Driven Architecture (GitHub Spec Kit Protocol)
 
-Once the PR/FAQ, MVP scope, and UI/UX design tokens are locked, author the technical blueprint in `.specs/`:
+Living, version-controlled specifications in `.specs/`:
 
 ```text
 .specs/
-├── spec.md          # Functional specifications, UI aesthetics & acceptance criteria
-├── data-model.md    # Schema, database tables, API payloads & state
-└── tasks.md         # Step-by-step sequential implementation checklist
+├── spec.md          # Functional specifications, UI design tokens & acceptance criteria
+├── data-model.md    # Database schema, API contracts & payloads
+└── tasks.md         # Sequential vertical-slice task checklist
 ```
 
-### 1. `spec.md` (Functional Specifications):
-* **UI Design Persona & Design Tokens:**
-  * Selected aesthetic archetype, heading font, body font, code font, and primary CSS variables.
-* **User Stories & Given-When-Then Acceptance Criteria:**
-  ```gherkin
-  Scenario: Customer completes instant order
-    Given an anonymous user on the landing page
-    When they enter valid inputs (date, city, or API key)
-    Then a real-time preview renders in < 2 seconds with staggered reveals
-    And a Stripe Checkout session is created upon clicking "Buy Now"
-  ```
-* **Error Handling & Edge Cases:** How the system handles empty inputs, third-party API timeouts, failed card payments, or invalid formats.
+### 1. `spec.md` (Functional Specs & Acceptance Criteria):
+* Narrow ICP, one-sentence product pitch, and measurable customer outcome.
+* UI design persona and design tokens.
+* User stories with concrete Given-When-Then acceptance criteria and edge case handling.
 
 ### 2. `data-model.md` (Architecture & Data Contracts):
-* **Tech Stack Selection:** Prefer simple, robust, well-supported stacks:
-  * Frontend/Backend: Next.js (App Router) + Tailwind CSS + TypeScript.
-  * Database: Supabase (PostgreSQL) or SQLite / simple cloud KV.
-  * Payment: Stripe Checkout (Hosted payment page, zero custom credit card UI).
-  * Storage/Fulfillment: Cloudflare R2 / AWS S3 + Gelato/Printful Webhook API.
-* **Database Tables & Types:** Table schemas, foreign keys, and indexes.
-* **API Endpoints:** Request/response schemas for all internal API routes.
+* Minimal stack: Next.js App Router, Tailwind CSS, Supabase/SQLite, Stripe Checkout.
+* Database schemas, relationships, indexes, and external webhook structures.
 
-### 3. `tasks.md` (Sequential Implementation Checklist):
-* Break the build into small, verifiable chunks (each task executable in 30–60 minutes):
-  - [ ] Task 1: Initialize Next.js project with Tailwind, custom font imports, and CSS theme tokens.
-  - [ ] Task 2: Implement core calculation / parsing engine with unit tests.
-  - [ ] Task 3: Build distinctive UI layout with atmospheric background and staggered entrance motion.
-  - [ ] Task 4: Connect Stripe Checkout webhook for order fulfillment.
-  - [ ] Task 5: Implement automated deliverable generator (PDF/Webhook/Email).
-  - [ ] Task 6: End-to-end user journey test (from landing page to confirmed order).
+### 3. `tasks.md` (Vertical Slicing & The Walking Skeleton):
+* **Milestone 1 — The Walking Skeleton:** Build the smallest end-to-end working path (Database $\rightarrow$ Backend/API $\rightarrow$ Frontend UI) connecting user input to delivered outcome before refining details.
+* **Vertical Slicing:** Each subsequent task delivers a working vertical slice of functionality rather than horizontal architectural layers.
+* **Verifiable Outcomes:** Each task has a clear verifiable outcome with appropriate tests (unit test for logic, integration check for core flows).
 
 ---
 
-## 🛡️ AI Coding Guardrails (For Coding Agents)
+## 🛡️ AI Coding Guardrails
 
 When an AI coding agent executes `tasks.md`:
-1. **Anti-AI-Slop Enforcement:** Strictly apply the distinctive typography, cohesive theme tokens, atmospheric lighting, and staggered entrance rules. Never ship generic Inter/purple-gradient slop.
-2. **Single-Task Execution:** Complete one task at a time and verify it with automated tests or terminal checks before proceeding.
-3. **No Dependency Sprawl:** Do not install heavy or obscure npm packages when standard native libraries or pure CSS suffice.
-4. **Preserve Simplicity:** Resist the urge to add abstractions, microservices, or complex state management until proven necessary.
-5. **End-to-End Verification:** Before declaring the MVP complete, run a full simulated purchase using Stripe Test Mode to verify that money is captured and the deliverable is generated.
+1. **Build the Walking Skeleton First:** Prove the end-to-end flow connects before spending time on secondary views.
+2. **Execute One Vertical Slice at a Time:** Verify each task with tests or terminal checks before proceeding.
+3. **No Dependency Sprawl:** Do not install heavy npm packages when native platform capabilities suffice.
+4. **Anti-AI-Slop Enforcement:** Apply the distinctive typography, cohesive theme tokens, and staggered entrance rules.
+5. **Simulated Transaction Test:** Perform a complete test-mode purchase and delivery before declaring the MVP complete.
 
 ---
 
 ## 📄 Required Output Artifacts
 
 Save in the project repository:
-1. `pr-faq.md` (Amazon-style Press Release & Customer FAQ).
-2. `.specs/spec.md` (Functional specs, UI design tokens & acceptance criteria).
+1. `pr-faq.md` (1-page PR, 3-step journey, 5 FAQs, 1-sentence pitch, narrow ICP).
+2. `.specs/spec.md` (Functional specs, UI design tokens, acceptance criteria).
 3. `.specs/data-model.md` (Database schema & API contracts).
-4. `.specs/tasks.md` (Sequential build task list).
-5. Human Sign-Off Checkpoint before initiating development.
+4. `.specs/tasks.md` (Walking skeleton & vertical-slice build list).
+5. Pre-Mortem & Founder Sign-Off Checkpoint before initiating development.
