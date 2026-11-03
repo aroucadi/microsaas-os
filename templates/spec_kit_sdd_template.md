@@ -34,6 +34,16 @@
 * **Fulfillment / Billing:** [e.g., Stripe Checkout / Gelato Print-on-Demand Webhooks]
 * **Hosting:** [e.g., Vercel / Cloudflare Workers]
 
+### 1.4 Distinctive UI/UX Architecture & Aesthetics (Anti-AI-Slop)
+* **Design Archetype:** [Obsidian & Phosphor | Warm Atelier | Midnight Cobalt | Neo-Brutalist Studio]
+* **Typography Pairing:**
+  * **Headings:** [e.g., Cabinet Grotesk / Syne / Instrument Serif / Clash Display]
+  * **Body / UI:** [e.g., Plus Jakarta Sans / General Sans / Satoshi / Switzer]
+  * **Code / Numbers:** [e.g., JetBrains Mono / Fragment Mono / DM Mono]
+* **Atmospheric Background Treatment:** [e.g., Subtle radial emerald spotlight `rgba(0, 255, 136, 0.12)` + 28px microgrid mask | Warm paper grain with ecru `#fbf9f5` canvas]
+* **Page Entrance Motion:** Staggered entrance reveals (`revealUp` with 80ms delay increments, `cubic-bezier(0.16, 1, 0.3, 1)` easing).
+* **Mobile / Responsive Layout:** Pinned bottom-third primary CTA, sliding bottom sheets with drag handles for modals ($< 768\text{px}$), minimum $44 \times 44\text{px}$ touch targets.
+
 ---
 
 ## 2. Data Models (`data-model.md`)

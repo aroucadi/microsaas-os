@@ -71,7 +71,7 @@ flowchart TD
 | [**`microsaas-discovery`**](skills/microsaas-discovery/) | Opportunity Hunting & Idea Scoring | 4 Archetypes, Complaint Mining, JTBD | Rubric $\ge 24/35$ to advance; kills low-signal ideas |
 | [**`microsaas-research`**](skills/microsaas-research/) | Competitive Moats & Red Teaming | Porter's 5 Forces, Moat Scorecard, Red Team | Moat $\ge 18/30$; exposes platform risk & incumbent traps |
 | [**`microsaas-validation`**](skills/microsaas-validation/) | Customer Discovery & Mom Test | Rob Fitzpatrick's Mom Test, Smoke Testing | Pre-registered 14-day falsification gates |
-| [**`microsaas-product`**](skills/microsaas-product/) | Amazon PR/FAQ & Spec-Driven Dev (SDD) | Working Backwards, MoSCoW ($\le 3$ feats), SDD | Full GitHub Spec Kit (`spec.md`, `data-model.md`, `tasks.md`) |
+| [**`microsaas-product`**](skills/microsaas-product/) | Amazon PR/FAQ, Spec-Driven Dev (SDD) & Anti-AI-Slop Aesthetics | Working Backwards, MoSCoW ($\le 3$ feats), Anti-Slop UI Directives | Full GitHub Spec Kit (`spec.md`, `data-model.md`, `tasks.md`) with bespoke UI tokens |
 | [**`microsaas-distribution`**](skills/microsaas-distribution/) | GTM, Viral Video & Programmatic SEO | Hook-Retain-Reward scripts, pSEO matrix | 3 viral video scripts + pSEO database architecture |
 | [**`microsaas-metrics`**](skills/microsaas-metrics/) | Unit Economics & Double Down / Kill | AARRR Pirate Metrics, Net Margin Accounting | 30-day decision memo: `DOUBLE DOWN`, `PIVOT`, or `KILL` |
 
@@ -93,6 +93,22 @@ Before any idea receives a **GO** recommendation:
 1. **The Incumbent Feature Trap:** If an established SaaS can clone the core functionality as a minor Friday sprint feature, the idea is **REJECTED**.
 2. **The Platform Dependency Trap:** If the idea violates platform TOS or relies on scraping/APIs that can be revoked overnight, it is **REJECTED**.
 3. **The Low Willingness-to-Pay (WTP) Trap:** If target users are accustomed to free open-source tools or complain about \$5/mo prices, it is **REJECTED**.
+
+---
+
+## 🎨 Distinctive UI/UX Architecture: Banishing "AI Slop"
+
+Most AI coding agents produce apps that look like 99% of generated software: identical centered hero sections, generic `Inter` typography, clichéd purple gradients on white cards, and predictable 3-card grids.
+
+Micro-SaaS Founder OS incorporates **[Hashim Warren's Frontend Aesthetics Directive](https://gist.github.com/hashimwarren/b544f89bdb50e4877d0e603ad547e18f)** directly into the build pipeline so generated web and mobile interfaces look bespoke, tactile, and memorable.
+
+* **Distinctive Typography Pairings:** Ban generic `Inter`, `Roboto`, and `Arial`. Pair high-character headings (`Syne`, `Cabinet Grotesk`, `Instrument Serif`, `Clash Display`, or `Fraunces`) with refined body fonts (`Plus Jakarta Sans`, `General Sans`, `Satoshi`).
+* **Cohesive Aesthetic Archetypes:** Commit to a bold, context-specific theme (*Obsidian & Phosphor* for DevTools, *Warm Atelier* for Keepsakes, *Midnight Cobalt* for Fintech, *Neo-Brutalist* for Creative tools) with defined CSS variables.
+* **Atmospheric Depth & Tactile Lighting:** Layer subtle radial lighting gradients (`radial-gradient`), 28px micro-grids, or warm paper textures with crisp top rim light (`inset 0 1px 0 rgba(255,255,255,0.08)`).
+* **Orchestrated Staggered Reveals:** Avoid scattered hover effects. Use pure CSS staggered page reveals on load (`animation-delay: calc(var(--index) * 80ms)`) with snappy cubic-bezier easing (`cubic-bezier(0.16, 1, 0.3, 1)`).
+* **Mobile Ergonomics:** Thumb-zone CTA placement in lower third, sliding bottom sheets instead of centered modal popups, and $44 \times 44\text{px}$ minimum touch targets.
+
+*Reference Guide:* See [`templates/frontend_aesthetics_anti_slop.md`](templates/frontend_aesthetics_anti_slop.md).
 
 ---
 
@@ -230,6 +246,7 @@ Copy-paste templates located in [`templates/`](templates/):
 * `mom_test_script_template.md`: Customer discovery interview script.
 * `pr_faq_template.md`: Amazon-style press release and FAQ.
 * `spec_kit_sdd_template.md`: GitHub Spec Kit for Spec-Driven Development.
+* `frontend_aesthetics_anti_slop.md`: Anti-AI-slop design directives, typography pairings, and theme tokens.
 * `short_form_video_script_template.md`: Hook-Retain-Reward TikTok/Reels script.
 * `performance_review_template.md`: 30-day post-launch metrics review.
 

@@ -39,7 +39,7 @@ Every material claim, market figure, and customer pain point produced by any ski
 * **Stage 1 (Discovery & Hunting):** Invoke `microsaas-discovery`
 * **Stage 2 (Market & Competitors):** Invoke `microsaas-research`
 * **Stage 3 (Validation & Evidence):** Invoke `microsaas-validation`
-* **Stages 4 & 5 (Strategy, PR/FAQ & Spec-Driven Dev):** Invoke `microsaas-product`
+* **Stages 4 & 5 (Strategy, PR/FAQ, Anti-AI-Slop UI Architecture & Spec-Driven Dev):** Invoke `microsaas-product`
 * **Stages 6, 7 & 8 (Launch, Viral Content & Sales):** Invoke `microsaas-distribution`
 * **Stage 9 (Analytics, Economics & Kill/Scale):** Invoke `microsaas-metrics`
 
@@ -92,6 +92,19 @@ Every major milestone must append a formatted decision entry:
 
 ---
 
+## 🎨 The Anti-AI-Slop Frontend Aesthetic Standard (Web & Mobile)
+
+Whenever a project reaches the stage of creating smoke-test pages, web dashboards, or mobile views, `microsaas-hub` mandates adherence to the **Anti-AI-Slop Design Directives** (inspired by [Hashim Warren's Frontend Aesthetics Directive](https://gist.github.com/hashimwarren/b544f89bdb50e4877d0e603ad547e18f)):
+
+1. **Banned Clichés:** Never generate generic `Inter`/`Roboto` typography, purple gradients on flat white, or generic 3-card grids.
+2. **Distinctive Typography Pairings:** Enforce character-rich headings (`Syne`, `Cabinet Grotesk`, `Instrument Serif`, `Clash Display`, or `Fraunces`) paired with refined, highly readable body fonts (`Plus Jakarta Sans`, `General Sans`, `Satoshi`).
+3. **Curated Theme Tokens:** Commit to a cohesive aesthetic archetype (e.g. *Obsidian & Phosphor* for DevTools, *Warm Atelier* for Keepsakes/Editorial, *Midnight Cobalt* for Fintech, *Neo-Brutalist* for Creative tools).
+4. **Atmospheric Lighting & Depth:** Never allow flat white or black canvases. Require multi-stop radial spotlights, micro-grids, or warm paper texture with subtle rim lighting.
+5. **Orchestrated Motion:** Require pure CSS staggered entrance reveals on page load (`animation-delay: calc(var(--index) * 80ms)`) and tactile micro-compression (`active:scale-[0.98]`).
+6. **Mobile Ergonomics:** Thumb-zone primary CTAs, sliding bottom sheets with tactile handles instead of centered modals, and minimum $44 \times 44\text{px}$ touch targets.
+
+---
+
 ## 🚦 Hard Stage Gates (Non-Negotiable)
 
 | Current Stage | Required Gate Artifact | Mandatory Passing Criteria | Next Stage |
@@ -100,7 +113,7 @@ Every major milestone must append a formatted decision entry:
 | **2. RESEARCH** | `competitive-audit.md` | Verified incumbents with pricing URLs, survived Adversarial Red Team challenge, **GO verdict** on asymmetric wedge. | **3. VALIDATE** |
 | **3. VALIDATE** | `validation-ledger.md` | $\ge 5$ Mom Test interviews OR $\ge 20$ high-intent smoke test signups/pre-orders. Real evidence of willingness to pay. | **4. STRATEGIZE** |
 | **4. STRATEGIZE** | `pr-faq.md` | Complete 1-page Press Release, Customer FAQ, and MoSCoW MVP Scope (strictly $\le 3$ core features). | **5. SPEC & BUILD** |
-| **5. SPEC & BUILD** | `spec.md` + Functional MVP | Spec Kit SDD compliant, passes end-to-end user journey test, Stripe checkout functional. | **6. LAUNCH** |
+| **5. SPEC & BUILD** | `spec.md` + Functional MVP | Spec Kit SDD compliant, Anti-AI-Slop frontend aesthetics verified (distinctive typography, cohesive theme tokens, atmospheric lighting, staggered entrance), passes end-to-end user journey test, Stripe checkout functional. | **6. LAUNCH** |
 | **6. LAUNCH** | `launch-report.md` | Live on primary channel (Product Hunt, Reddit, niche community), early adopters tracked. | **7. DISTRIBUTE** |
 | **7. DISTRIBUTE** | `content-pipeline.md` | $\ge 5$ short-form video hooks/scripts published, programmatic SEO indexed, initial traffic flowing. | **8. MONETIZE** |
 | **8. MONETIZE** | `revenue-ledger.md` | First paying customer closed (€ or $ in bank). Unit economics logged. | **9. OPTIMIZE** |
