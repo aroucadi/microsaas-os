@@ -93,6 +93,9 @@
         "properties": {
           "id": { "type": "string" },
           "type": { "type": "string", "enum": ["mom_test", "concierge", "wizard_of_oz", "smoke_page", "tech_spike"] },
+          "evoi_score": { "type": "number" },
+          "reversibility": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "time_hours": { "type": "number" },
           "target_sample": { "type": "integer" },
           "completed": { "type": "integer" },
           "pass_criteria": { "type": "string" },
@@ -111,6 +114,24 @@
           "rationale": { "type": "string" },
           "approved_by_founder": { "type": "boolean" },
           "timestamp": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "pre_registered_kill_criteria": {
+      "type": "object",
+      "properties": {
+        "archetype": { "type": "string", "enum": ["A_B2C", "B_PROSUMER", "C_B2B_HIGHTICKET"] },
+        "evaluation_horizon_days": { "type": "integer" },
+        "min_sample_size": { "type": "integer" },
+        "kill_thresholds": {
+          "type": "object",
+          "properties": {
+            "min_paid_customers": { "type": "integer" },
+            "min_gross_revenue": { "type": "number" },
+            "max_acceptable_cac": { "type": "number" },
+            "min_retention_rate_pct": { "type": "number" },
+            "min_sean_ellis_pmf_pct": { "type": "number" }
+          }
         }
       }
     },

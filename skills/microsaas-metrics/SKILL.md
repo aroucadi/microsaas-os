@@ -3,14 +3,14 @@ name: microsaas-metrics
 description: >-
   Analytics, unit economics, conversion funnels, and the objective Kill/Pivot/Scale decision framework for micro-SaaS.
   Use when tracking business performance, auditing true net margins after fulfillment and Stripe fees,
-  measuring the North Star Metric and Sean Ellis PMF test, or enforcing the 30-day Double Down, Pivot, or Kill protocol.
+  measuring the North Star Metric and Sean Ellis PMF test, or enforcing archetype-calibrated pre-registered kill criteria.
 ---
 
 # Micro-SaaS Analytics, Unit Economics & Kill Switch (`microsaas-metrics`)
 
-Use this skill to strip emotion away from business performance, track true net cash collected, identify funnel leaks, and enforce the **Double Down, Pivot, or Kill** protocol.
+Use this skill to strip emotion away from business performance, track true net cash collected, identify funnel leaks, and enforce the **Double Down, Pivot, or Kill** protocol based on **venture-specific pre-registered hypotheses**.
 
-> **Core Principle:** Track customer value delivered, not vanity traffic.
+> **Core Principle:** Track customer value delivered and net retained cash, not vanity traffic.
 
 ---
 
@@ -71,6 +71,9 @@ $$\text{Net Retained Cash} = \text{Gross Revenue} - \text{Stripe Fees} - \text{F
 | **Digital Unlock (PDF)** | \$6.99 | \$0.50 | \$0.05 | \$0.05 | **\$6.39 (~91%)** |
 | **Framed Poster (Gelato)** | \$49.00 | \$1.72 | \$21.50 *(Print & Ship)* | \$0.10 | **\$25.68 (~52%)** |
 | **Micro-Sub (SaaS)** | \$19.00/mo | \$0.85 | \$0.80 *(Compute/AI API)* | \$0.20 | **\$17.15 (~90%)** |
+| **High-Ticket B2B Utility** | \$199.00/mo | \$6.07 | \$5.00 *(Dedicated Worker)* | \$2.00 | **\$185.93 (~93%)** |
+
+> [!WARNING] **Economic Circuit Breaker:** If Net Cash Margin drops below 40% (or unit margin is negative after API fees), the Meta-Governor trips a mandatory **Economic Pause**. Software feature development is suspended until pricing or COGS are re-engineered.
 
 ---
 
@@ -87,38 +90,27 @@ Survey active users who have experienced the core workflow at least twice:
 
 ---
 
-## 🛑 Part 5: The 30-Day "Double Down, Pivot, or Kill" Protocol
+## 🛑 Part 5: Archetype-Calibrated Pre-Registered Kill Protocol
 
-After 30 days of live operation and at least **500 unique visitors**, run the objective audit:
+Universal 30-day / 500-visitor rules fail because low-ticket impulse tools require fast turnaround, while B2B compliance workflows require longer sales evaluation. Every venture pre-registers its termination thresholds based on its **Go-To-Market Archetype**:
 
-### Rule 1: DOUBLE DOWN (The Winner Signal)
-* **Metrics:**
-  * $\ge 20$ paid orders closed OR $\ge \$1,000$ in gross revenue.
-  * Customer complaints / refund requests $< 3\%$.
-  * Sean Ellis test $\ge 40\%$ "Very disappointed".
-* **Action:**
-  * Build out full programmatic SEO (pSEO) matrix.
-  * Reinvest profits into higher-volume short-form video production.
-  * Add automated Print-on-Demand upsells if digital-only.
+### 1. Archetype A: B2C Impulse & Keepsakes ($5 – $29 one-off)
+* **Horizon & Sample:** 14 – 21 Days \| $\ge 500$ unique visitors \| 10 published creative hooks.
+* **Double Down:** $\ge 20$ orders ($> \$400$ net cash), organic video shares $> 5\%$.
+* **Pivot:** High preview generation ($\ge 50\%$) but checkout dropoff ($< 0.5\%$) $\rightarrow$ discount or test bundle pricing.
+* **Kill:** $< 5$ sales after 500 targeted visitors; zero organic shares; refund rate $> 10\%$.
 
-### Rule 2: PIVOT (The Near-Miss Signal)
-* **Metrics:**
-  * High activation rate ($\ge 50\%$ test the generator), but low payment conversion ($< 1\%$).
-  * Feedback says: *"I love the preview, but $X is too high"* OR *"I need integration with Y"*.
-* **Action:**
-  * Test lower-friction pricing (e.g. drop from \$19/mo sub to \$6.99 one-time).
-  * Shift emotional niche or ICP segment.
-  * Run 1 additional 14-day test cycle.
+### 2. Archetype B: Prosumer & Indie B2B ($19 – $79/mo subscription)
+* **Horizon & Sample:** 30 – 45 Days \| $\ge 200$ activated users (completed core setup / preview).
+* **Double Down:** $\ge 10$ paid subscribers ($> \$500$ MRR), Month-1 retention $\ge 70\%$, Sean Ellis $\ge 40\%$.
+* **Pivot:** Users love tool but balk at subscription $\rightarrow$ test one-time lifetime deal (LTD) or annual pass.
+* **Kill:** $< 5$ paying subscribers after 45 days, Month-1 retention $< 40\%$, Sean Ellis $< 25\%$.
 
-### Rule 3: KILL (The Zero-Delusion Kill Switch)
-* **Metrics:**
-  * $< 3$ paid sales after $\ge 500$ targeted visitors and 10 published video hooks.
-  * Zero organic shares, zero word-of-mouth referral.
-  * High customer support friction or high refund rate ($> 15\%$).
-* **Action:**
-  * **SHUT IT DOWN.** Do not spend another hour optimizing CSS or adding features.
-  * Archive codebase, cancel dedicated third-party subscriptions, log learnings in `.microsaas/decision-log.md`.
-  * Move immediately to the next opportunity in the backlog.
+### 3. Archetype C: High-Ticket B2B & Compliance ($99 – $500+/mo)
+* **Horizon & Sample:** 45 – 60 Days \| 15 Mom Test discovery calls \| 5 pilot deployments.
+* **Double Down:** $\ge 2$ paid production pilots / signed LOIs ($> \$500$ MRR), customer requests enterprise terms.
+* **Pivot:** Decision maker expresses need but security/integration blockers $\rightarrow$ pivot to on-prem / webhook proxy.
+* **Kill:** 0 paid pilots and 0 LOIs after 15 qualified calls; problem rated $< 7/10$ urgency by leads.
 
 ---
 
@@ -129,4 +121,5 @@ Save performance reviews in `performance-review.md`:
 2. Funnel Metrics Summary Table (Visitors $\rightarrow$ Previews $\rightarrow$ Sales $\rightarrow$ Cash).
 3. Net Profit Calculation (Post-fees and fulfillment).
 4. Sean Ellis PMF Test Result.
-5. Objective Audit Verdict: **DOUBLE DOWN / PIVOT / KILL**.
+5. Pre-registered Archetype Threshold Audit.
+6. Objective Audit Verdict: **DOUBLE DOWN / PIVOT (Solution or Wedge) / KILL VENTURE**.

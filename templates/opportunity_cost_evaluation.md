@@ -1,44 +1,68 @@
-# Opportunity Cost & Experiment Prioritization Template
+# Expected Value of Information (EVOI) & Opportunity Cost Framework
 
-> **Core Question:** "Is this the best use of the founder's next 4 hours?"  
-> **Mandate:** Maximize uncertainty reduction per hour invested. Never spend 3 weeks building something that a 2-day experiment could invalidate.
-
----
-
-## 1. Initiative / Opportunity Candidate
-
-* **Proposed Initiative:** [e.g., Build multi-tenant team dashboard vs. Run 5 Mom Test calls with compliance managers]
-* **Target Uncertainty to Resolve:** [e.g., Will enterprise clinics pay $99/mo for team roles?]
-* **Active Capability Domain:** `[Discovery | Research | Validation | Product | Engineering | Distribution]`
+> **The Meta-Governor Mandate:** "Is this the best use of the founder's next 4 hours?"  
+> Maximize uncertainty reduction per hour invested. Never spend weeks writing speculative code when a 2-day or 4-hour experiment can invalidate the fatal premise.
 
 ---
 
-## 2. Priority Scoring Formula
+## 1. Initiative & Target Hypothesis
 
-$$\text{Priority Score} = \frac{\text{Expected Commercial Value} \times \text{Uncertainty Reduction}}{\text{Time to Evidence} \times \text{Resource Cost}}$$
-
-| Scoring Metric | Range | Assessment for This Initiative | Score (1-5) |
-| :--- | :---: | :--- | :---: |
-| **1. Expected Commercial Value** | 1 (Low) - 5 (High) | How significantly does this impact revenue potential? | [Score] |
-| **2. Uncertainty Reduction** | 1 (Minor) - 5 (Fatal) | Does this resolve an assumption that could kill the company? | [Score] |
-| **3. Time to Evidence** | 1 (> 2 wks) - 5 (< 48 hrs) | How quickly will observable customer signal arrive? | [Score] |
-| **4. Resource / Build Cost** | 1 (Heavy) - 5 (Near Zero) | How cheap is this in engineering hours and spend? | [Score] |
-
-**Calculated Opportunity Score:** `[High / Medium / Low]`
+* **Proposed Initiative:** `[e.g., Build multi-tenant team dashboard vs. Run 5 Mom Test calls with compliance managers]`
+* **Target Hypothesis to Test:** `[e.g., HYP-01: Compliance leads will pay $99/mo for PCI webhook retention audit logs]`
+* **Uncertainty Category:** `[Problem Fit | Solution Fit | Willingness-to-Pay | Channel Feasibility | Technical Feasibility]`
+* **Active Capability Domain:** `[Discovery | Research | Validation | Product | Build | Distribution | Metrics]`
 
 ---
 
-## 3. The 4-Hour Acid Test
+## 2. EVOI Prioritization Formula
 
-Can we get 80% of this signal in under 4 hours?
+Instead of naive subjective scoring, evaluate the **Expected Value of Information (EVOI)**:
 
-* **Proposed Heavy Path (e.g. 10 days):** [e.g. Build custom database sync worker and background cron jobs]
-* **Lightweight 4-Hour Proxy:** [e.g. Manually export CSV, run python script locally, and email result to client via Concierge delivery]
+$$\text{EVOI Score} = \frac{I \times \left[ P(\text{success}) \times V_{\text{success}} - (1 - P(\text{success})) \times C_{\text{fail}} \right] \times R}{T_{\text{evidence}} \times C_{\text{exp}}}$$
+
+### Metric Definitions & Scoring Rubric:
+
+| Variable | Description | Scale / Units | Evaluation Guide |
+| :--- | :--- | :---: | :--- |
+| **$I$ (Information Gain)** | How decisively does this experiment eliminate the focal uncertainty? | 1.0 – 5.0 | **5.0:** Binary proof (payment collected or rejected).<br/>**3.0:** Strong signal (5 in-depth user interviews).<br/>**1.0:** Ambiguous noisy signal (social poll). |
+| **$P(\text{success})$** | Prior probability that the hypothesis is true | 0.05 – 0.95 | Based on existing 4D evidence (default: 0.30 for unproven assumptions). |
+| **$V_{\text{success}}$** | Commercial value if hypothesis is validated | Normalized ($1 – $10) | Projected annualized gross margin if verified. |
+| **$C_{\text{fail}}$** | Downside loss if hypothesis is false | Normalized ($1 – $10) | Cost of building without knowing (wasted engineering sprints). |
+| **$R$ (Reversibility Factor)** | Two-way door vs. One-way door discount | 0.2 – 1.0 | **1.0:** Easily reversible 2-way door (Concierge, Mom Test, Smoke page).<br/>**0.5:** Moderately difficult to undo (custom data model, brand name).<br/>**0.2:** Irreversible 1-way door (long-term contract, patent, hardware tooling). |
+| **$T_{\text{evidence}}$** | Wall-clock time to receive conclusive signal | Days (or Hours / 24) | **0.2:** $\le 4$ hours.<br/>**1.0:** 1 day.<br/>**7.0:** 1 week.<br/>**21.0:** 3 weeks. |
+| **$C_{\text{exp}}$** | Direct financial and opportunity cost of running experiment | Normalized ($1 – $5) | **1.0:** Founder time only ($0 cash).<br/>**3.0:** Ad spend / software fees ($50-$200).<br/>**5.0:** Heavy outsource or dev build ($500+). |
 
 ---
 
-## 4. Governance Verdict
+## 3. The 4-Hour Acid Test (Proxy Experimentation)
 
-- [ ] **EXECUTE IMMEDIATELY (Highest ROI on Time):** Fast-feedback, high uncertainty reduction.
-- [ ] **DEFER / POSTPONE:** Good idea, but downstream of more fatal uncertainties.
-- [ ] **REJECT (Low Leverage):** Heavy build time with low informational yield.
+Before committing to any experiment requiring $> 48$ hours ($T_{\text{evidence}} > 2$):
+
+> **Can we get 80% of this information in under 4 hours?**
+
+* **Heavy Path ($> 5$ days):**  
+  *Example:* Write backend webhooks processor, database migrations, authentication, billing integration.
+* **4-Hour Proxy Path ($\le 4$ hours):**  
+  *Example:* Build a 1-page static mock, manually trigger 3 Stripe test webhooks in CLI, export JSON report, and email it to 3 target leads with a Stripe payment link.
+* **Proxy Test Verdict:**  
+  *If proxy yields negative signal $\rightarrow$ save 3 weeks of code immediately.*
+
+---
+
+## 4. Operational Prioritization Ranking
+
+When comparing multiple potential initiatives in `.microsaas/state.json`:
+
+| Rank | Initiative | Type | Est. Time ($T$) | Reversibility ($R$) | EVOI Score | Action |
+| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
+| **#1** | [Mom Test 5 Calls] | RAT | 4 hrs | 1.0 (2-way) | **High** | **Execute First** |
+| **#2** | [Smoke Page Test] | RAT | 6 hrs | 1.0 (2-way) | **Medium** | Queue next |
+| **#3** | [Build Full Auth & DB] | Code | 80 hrs | 0.4 (1-way) | **Low** | **Blocked** by #1 & #2 |
+
+---
+
+## 5. Meta-Governor Execution Directive
+
+- [ ] **EXECUTE IMMEDIATELY:** Highest EVOI, low time-to-evidence, highly reversible.
+- [ ] **CHALLENGE FOR PROXY:** Good hypothesis, but proposed implementation is too heavy ($T > 2$ days). Replace with 4-hour proxy.
+- [ ] **BLOCK / REJECT:** Downstream engineering tasks masquerading as validation.
