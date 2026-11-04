@@ -1,7 +1,7 @@
 # Layer 2 Capability Transition Contracts Specification
 
 > **Architectural Law:** The Execution Graph defines what states and transitions are valid. The Meta-Governor selects the next transition based on evidence and risk.  
-> Every capability in the execution graph operates under a formal contract: **Inputs, Preconditions, Outputs, Evidence Requirements, State Mutations (`state.json`), Exit Conditions, and Failure Handling**.
+> Every capability in the execution graph operates under a formal contract: **Inputs, Preconditions, Outputs, Evidence Requirements, State Mutations (`state.json`), Machine-Readable Results (`templates/capability_result_schema.json`), Exit Conditions, and Failure Handling**.
 
 ---
 
@@ -21,7 +21,56 @@ flowchart LR
     VAL -.->|"Kill Solution"| PROD
     VAL -.->|"Kill Wedge"| DISC
     VAL -.->|"Kill Venture"| DEAD[🛑 Terminal State]
+    DIST -.->|"Channel Failure"| DIST
     METR -.->|"Audit Failure"| VAL
+```
+
+---
+
+## 🎯 Precise Hypothesis-Specific Falsification Mapping
+
+A blunt "experiment failed $\rightarrow$ kill venture" is catastrophic. The Meta-Governor identifies precisely which hypothesis was tested and failed before triggering a state transition:
+
+```text
+┌───────────────────────────────┬───────────────────────────────┬────────────────────────────────────────────┐
+│ Falsified Hypothesis Type     │ Root Cause Diagnosis          │ Precise Corrective Transition              │
+├───────────────────────────────┼───────────────────────────────┼────────────────────────────────────────────┤
+│ 1. Problem Hypothesis         │ Pain is trivial / Free tools  │ KILL VENTURE (Terminal shutdown)           │
+│ 2. Solution Hypothesis        │ Real pain, but tool rejected  │ KILL SOLUTION (Redesign UX / Delivery)     │
+│ 3. Wedge / ICP Hypothesis     │ Pain exists, but segment broke│ KILL WEDGE (Reposition ICP to high-budget) │
+│ 4. Acquisition Channel Hypo   │ Good product, poor channel fit│ PIVOT CHANNEL (Test organic vs paid vs SEO)│
+│ 5. Pricing / Packaging Hypo   │ Love tool, hate subscription  │ PIVOT PRICING (Test LTD / Usage / Annual)  │
+│ 6. Retention Hypothesis       │ Day-1 value, no habit trigger │ REVISE CORE LOOP (Re-engineer triggers)    │
+└───────────────────────────────┴───────────────────────────────┴────────────────────────────────────────────┘
+```
+
+---
+
+## 📑 Standardized Machine-Readable Output Format
+
+Every capability execution produces a JSON document matching `templates/capability_result_schema.json`:
+
+```json
+{
+  "capability": "microsaas-validation",
+  "execution_id": "exec_2026_014",
+  "timestamp": "2026-11-04T16:45:00Z",
+  "status": "completed",
+  "decision": "pivot_solution",
+  "focal_hypothesis_id": "HYP-SOL-01",
+  "hypothesis_status": "falsified",
+  "evidence_references": ["LEDGER-EV-04", "LEDGER-EV-05"],
+  "confidence_assessment": {
+    "reliability": 0.85,
+    "strength": 0.80,
+    "recency": 0.95,
+    "independence": 0.70
+  },
+  "unresolved_risks": ["EHR API integration security review required"],
+  "next_recommended_capability": "microsaas-product",
+  "requires_founder_approval": false,
+  "artifacts_produced": [".microsaas/mom_test_transcript.md"]
+}
 ```
 
 ---
@@ -67,7 +116,7 @@ flowchart LR
 ### Contract 3: `microsaas-validation`
 * **Purpose:** Pre-code Riskiest Assumption Testing (RAT) and demand verification.
 * **Inputs:** Critical assumption from Red Team Memo or intake audit.
-* **Preconditions:** Hypothesis articulated; EVOI score calculated.
+* **Preconditions:** Hypothesis articulated; EIPH heuristic score calculated.
 * **Operational Execution:**
   - Select RAT experiment type: Mom Test Calls (5–8), Smoke Page, or Concierge MVP.
   - Execute 4-Hour proxy experiment if possible.
@@ -79,10 +128,7 @@ flowchart LR
   - `experiments`: Record experiment id, sample size, and quantitative results.
   - `verified_facts`: Record validated customer willingness-to-pay or rejection data.
 * **Exit Conditions:** Measurable pass criteria achieved (e.g., $\ge 3/5$ confirm hair-on-fire pain and past spend).
-* **Failure Handling (3-Tier Precision Termination):**
-  - If Customer rejects specific UX tool but has pain $\rightarrow$ **Kill Solution** (Route to `microsaas-product` with revised PR/FAQ).
-  - If Customer segment lacks budget $\rightarrow$ **Kill Wedge** (Route to `microsaas-discovery` to re-anchor ICP).
-  - If Pain is non-existent across all segments $\rightarrow$ **Kill Venture** (Hard Stop, mark `state.json` as `"terminated"`).
+* **Failure Handling:** Use Hypothesis-Specific Falsification Mapping (Kill Solution vs Kill Wedge vs Kill Venture).
 
 ---
 

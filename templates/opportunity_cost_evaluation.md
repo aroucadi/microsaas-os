@@ -5,22 +5,26 @@
 
 ---
 
-## 1. Initiative & Target Hypothesis
+## 1. Mathematical Grounding: True EVSI vs. Operational Heuristic
 
-* **Proposed Initiative:** `[e.g., Build multi-tenant team dashboard vs. Run 5 Mom Test calls with compliance managers]`
-* **Target Hypothesis to Test:** `[e.g., HYP-01: Compliance leads will pay $99/mo for PCI webhook retention audit logs]`
-* **Uncertainty Category:** `[Problem Fit | Solution Fit | Willingness-to-Pay | Channel Feasibility | Technical Feasibility]`
-* **Active Capability Domain:** `[Discovery | Research | Validation | Product | Build | Distribution | Metrics]`
+In classical decision theory and Bayesian experimental design, the **Expected Value of Sample Information (EVSI)** measures the expected increase in decision utility resulting from observing experimental evidence $E$:
+
+$$\text{EVSI} = \mathbb{E}_{E}\left[ \max_{a \in \mathcal{A}} \mathbb{E}_{X|E}[U(a, X)] \right] - \max_{a \in \mathcal{A}} \mathbb{E}_{X}[U(a, X)]$$
+
+Where:
+* $\mathcal{A}$ is the set of possible strategic decisions (e.g. advance to build, pivot ICP, kill venture).
+* $X$ is the true state of the market (e.g. real willingness-to-pay, platform policy stability).
+* $U(a, X)$ is the net commercial payoff of decision $a$ under market state $X$.
+* $E$ is the observable experimental outcome from the test (e.g. customer interviews, smoke test conversions).
+
+### The Operational Heuristic: EVOI-Inspired Prioritization Heuristic (EIPH)
+Because calculating full continuous probability distributions over market states is intractable in conversational agent workflows, the Meta-Governor evaluates an **EVOI-Inspired Prioritization Heuristic (EIPH)** for ranking competing initiatives:
+
+$$\text{EIPH Score} = \frac{I \times \left[ P(\text{success}) \times V_{\text{success}} - (1 - P(\text{success})) \times C_{\text{fail}} \right] \times R}{T_{\text{evidence}} \times C_{\text{exp}}}$$
 
 ---
 
-## 2. EVOI Prioritization Formula
-
-Instead of naive subjective scoring, evaluate the **Expected Value of Information (EVOI)**:
-
-$$\text{EVOI Score} = \frac{I \times \left[ P(\text{success}) \times V_{\text{success}} - (1 - P(\text{success})) \times C_{\text{fail}} \right] \times R}{T_{\text{evidence}} \times C_{\text{exp}}}$$
-
-### Metric Definitions & Scoring Rubric:
+## 2. Metric Definitions & Scoring Rubric
 
 | Variable | Description | Scale / Units | Evaluation Guide |
 | :--- | :--- | :---: | :--- |
@@ -29,7 +33,7 @@ $$\text{EVOI Score} = \frac{I \times \left[ P(\text{success}) \times V_{\text{su
 | **$V_{\text{success}}$** | Commercial value if hypothesis is validated | Normalized ($1 – $10) | Projected annualized gross margin if verified. |
 | **$C_{\text{fail}}$** | Downside loss if hypothesis is false | Normalized ($1 – $10) | Cost of building without knowing (wasted engineering sprints). |
 | **$R$ (Reversibility Factor)** | Two-way door vs. One-way door discount | 0.2 – 1.0 | **1.0:** Easily reversible 2-way door (Concierge, Mom Test, Smoke page).<br/>**0.5:** Moderately difficult to undo (custom data model, brand name).<br/>**0.2:** Irreversible 1-way door (long-term contract, patent, hardware tooling). |
-| **$T_{\text{evidence}}$** | Wall-clock time to receive conclusive signal | Days (or Hours / 24) | **0.2:** $\le 4$ hours.<br/>**1.0:** 1 day.<br/>**7.0:** 1 week.<br/>**21.0:** 3 weeks. |
+| **$T_{\text{evidence}}$** | Wall-clock time to receive conclusive signal | Days (or Hours / 24) | **0.17:** $\le 4$ hours.<br/>**1.0:** 1 day.<br/>**7.0:** 1 week.<br/>**21.0:** 3 weeks. |
 | **$C_{\text{exp}}$** | Direct financial and opportunity cost of running experiment | Normalized ($1 – $5) | **1.0:** Founder time only ($0 cash).<br/>**3.0:** Ad spend / software fees ($50-$200).<br/>**5.0:** Heavy outsource or dev build ($500+). |
 
 ---
@@ -53,7 +57,7 @@ Before committing to any experiment requiring $> 48$ hours ($T_{\text{evidence}}
 
 When comparing multiple potential initiatives in `.microsaas/state.json`:
 
-| Rank | Initiative | Type | Est. Time ($T$) | Reversibility ($R$) | EVOI Score | Action |
+| Rank | Initiative | Type | Est. Time ($T$) | Reversibility ($R$) | EIPH Score | Action |
 | :---: | :--- | :---: | :---: | :---: | :---: | :--- |
 | **#1** | [Mom Test 5 Calls] | RAT | 4 hrs | 1.0 (2-way) | **High** | **Execute First** |
 | **#2** | [Smoke Page Test] | RAT | 6 hrs | 1.0 (2-way) | **Medium** | Queue next |
@@ -63,6 +67,6 @@ When comparing multiple potential initiatives in `.microsaas/state.json`:
 
 ## 5. Meta-Governor Execution Directive
 
-- [ ] **EXECUTE IMMEDIATELY:** Highest EVOI, low time-to-evidence, highly reversible.
+- [ ] **EXECUTE IMMEDIATELY:** Highest EIPH, low time-to-evidence, highly reversible.
 - [ ] **CHALLENGE FOR PROXY:** Good hypothesis, but proposed implementation is too heavy ($T > 2$ days). Replace with 4-hour proxy.
 - [ ] **BLOCK / REJECT:** Downstream engineering tasks masquerading as validation.

@@ -15,23 +15,24 @@
 
 ---
 
-## 2. The 5 Forcing Productization Questions
+## 2. The 6 Forcing Productization Questions
 
 Every affirmative response must be backed by documented evidence in `.microsaas/source-ledger.md`.
 
 | # | Diagnostic Question | Honest Reality Check | Verified (Yes/No) | 4D Evidence Reference |
 | :-: | :--- | :--- | :---: | :--- |
-| **Q1** | **Value Source:** What are clients *really* paying for? | Are they paying for the mechanical data transformation, or for the founder's judgment, accountability, and customized advisory? | `[Yes/No]` | `[e.g., LEDGER-EV-04]` |
-| **Q2** | **Repeatability:** Is the workflow 90%+ standardized? | Do all clients use the identical data format, business rules, and output, or does every client require bespoke manual exceptions? | `[Yes/No]` | `[e.g., LEDGER-EV-05]` |
-| **Q3** | **Labor Decoupling:** Can human intervention be removed without degrading perceived value? | Can a user self-onboard and receive immediate value without founder onboarding calls or manual backend fixes? | `[Yes/No]` | `[e.g., LEDGER-EV-06]` |
-| **Q4** | **Founder Absence:** If the founder vanished for 60 days, would the client still derive 100% of the value? | If you stop answering client Slack messages, do they continue paying and using the software? | `[Yes/No]` | `[e.g., LEDGER-EV-07]` |
-| **Q5** | **Software-Only Willingness to Pay:** Will clients pay for software alone at a viable price point? | Have you explicitly asked: *"If I give you software that does X for $199/mo, but I no longer do your weekly calls, will you subscribe?"* | `[Yes/No]` | `[e.g., LEDGER-EV-08]` |
+| **Q1** | **Value Source:** What are clients *really* paying for? | Are they paying for the mechanical data transformation, or for the founder's judgment, accountability, and customized advisory? | `[Yes/No]` | `[e.g., LEDGER-EV-01]` |
+| **Q2** | **Repeatability:** Is the workflow 90%+ standardized? | Do all clients use the identical data format, business rules, and output, or does every client require bespoke manual exceptions? | `[Yes/No]` | `[e.g., LEDGER-EV-02]` |
+| **Q3** | **Labor Decoupling:** Can human intervention be removed without degrading perceived value? | Can a user self-onboard and receive immediate value without founder onboarding calls or manual backend fixes? | `[Yes/No]` | `[e.g., LEDGER-EV-03]` |
+| **Q4** | **Founder Absence:** If the founder vanished for 60 days, would the client still derive 100% of the value? | If you stop answering client Slack messages, do they continue paying and using the software? | `[Yes/No]` | `[e.g., LEDGER-EV-04]` |
+| **Q5** | **Software-Only Willingness to Pay:** Will clients pay for software alone at a viable price point? | Have you explicitly asked: *"If I give you software that does X for $199/mo, but I no longer do your weekly calls, will you subscribe?"* | `[Yes/No]` | `[e.g., LEDGER-EV-05]` |
+| **Q6** | **Zero-Human Outcome Equivalence:** Does the automated tool deliver equal or superior results? | Does the automated script produce an output that clients accept with zero manual touch-ups or human quality checks? | `[Yes/No]` | `[e.g., LEDGER-EV-06]` |
 
 ---
 
 ## 3. Productization Feasibility Score
 
-* **Total Affirmative Responses (Yes):** `[0 to 5]` / 5
+* **Total Affirmative Responses (Yes):** `[0 to 6]` / 6
 
 ### Strategic Routing Rules:
 
@@ -39,9 +40,9 @@ Every affirmative response must be backed by documented evidence in `.microsaas/
 flowchart TD
     AUDIT["Audit Result (Affirmative Count)"] --> CHECK{Score?}
 
-    CHECK -->|"5 / 5 (Fully Decoupled)"| PASS["🟢 CLEAN PRODUCTIZATION<br/>Route to microsaas-product (PR/FAQ & Specs)"]
-    CHECK -->|"3 - 4 / 5 (Partial Decoupling)"| HYBRID["🟡 CONCIERGE / WIZARD-OF-OZ<br/>Standardize workflow via semi-automated tooling first"]
-    CHECK -->|"< 3 / 5 (Consulting Trap)"| FAIL["🔴 FAILED PRODUCTIZATION<br/>Clients pay for labor/empathy. Do NOT build multi-tenant SaaS."]
+    CHECK -->|"5 - 6 / 6 (Fully Decoupled)"| PASS["🟢 CLEAN PRODUCTIZATION<br/>Route to microsaas-product (PR/FAQ & Specs)"]
+    CHECK -->|"3 - 4 / 6 (Partial Decoupling)"| HYBRID["🟡 CONCIERGE / WIZARD-OF-OZ<br/>Standardize workflow via semi-automated tooling first"]
+    CHECK -->|"< 3 / 6 (Consulting Trap)"| FAIL["🔴 FAILED PRODUCTIZATION<br/>Clients pay for labor/empathy. Do NOT build multi-tenant SaaS."]
 
     FAIL --> SERVICE_CHOICE{"Founder Strategic Choice"}
     SERVICE_CHOICE -->|"Keep High-Ticket Agency"| AGENCY["Scale boutique consulting / Productized service"]
@@ -54,6 +55,6 @@ flowchart TD
 
 * **Primary Failure Risk Identified:** `[e.g., Clients require custom ERP integrations that cannot be standardized without massive dev cost]`
 * **Selected Pathway:**
-  - [ ] **Pathway A (Pure SaaS Advance):** 5/5 verified. Proceed directly to Spec-Driven Development (`microsaas-product`).
-  - [ ] **Pathway B (Concierge / Hybrid MVP):** 3-4/5 verified. Package a standardized 1-workflow prototype operated manually by founder to prove self-serve viability.
-  - [ ] **Pathway C (Productized Service):** <3/5 verified. Halt SaaS build. Productize service pricing or pivot to a different customer segment who actually wants software.
+  - [ ] **Pathway A (Pure SaaS Advance):** 5-6/6 verified. Proceed directly to Spec-Driven Development (`microsaas-product`).
+  - [ ] **Pathway B (Concierge / Hybrid MVP):** 3-4/6 verified. Package a standardized 1-workflow prototype operated manually by founder to prove self-serve viability.
+  - [ ] **Pathway C (Productized Service):** <3/6 verified. Halt SaaS build. Productize service pricing or pivot to a different customer segment who actually wants software.

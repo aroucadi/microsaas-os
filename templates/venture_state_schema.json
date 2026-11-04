@@ -147,6 +147,21 @@
         "allocated_time": { "type": "string" },
         "permission_tier": { "type": "string", "enum": ["tier_1_autonomous", "tier_2_notification", "tier_3_founder_approval"] }
       }
-    }
+    },
+    "override_ledger": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "timestamp", "recommended_action", "founder_decision", "rationale"],
+        "properties": {
+          "id": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "recommended_action": { "type": "string" },
+          "founder_decision": { "type": "string" },
+          "rationale": { "type": "string" }
+        }
+      }
+    },
+    "events_stream_ref": { "type": "string" }
   }
 }

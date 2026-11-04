@@ -287,18 +287,20 @@ Avoids premature venture death by diagnosing the exact failure point:
 * **Tier 2: Notification Gate (Propose & Proceed):** Proposing RAT experiments, sizing development appetite, selecting UI design archetypes.
 * **Tier 3: Explicit Founder Approval (Hard Stop):** Terminating an idea (Kill Solution/Wedge/Venture), changing strategic positioning, spending real money (ads, domains), and deploying to production.
 
-### 4. Expected Value of Information (EVOI) Prioritization
+### 4. Expected Value of Information Heuristic (EIPH)
 Before launching any multi-day initiative, the Meta-Governor evaluates:
 > *"Is this the best use of the founder's next 4 hours?"*
 
-$$\text{EVOI Score} = \frac{I \times \left[ P(\text{success}) \times V_{\text{success}} - (1 - P(\text{success})) \times C_{\text{fail}} \right] \times R}{T_{\text{evidence}} \times C_{\text{exp}}}$$
+While classical Bayesian Expected Value of Sample Information is formally $\text{EVSI} = \mathbb{E}_{E}\left[ \max_{a} \mathbb{E}_{X|E}[U(a, X)] \right] - \max_{a} \mathbb{E}_{X}[U(a, X)]$, agentic workflows calculate the operational **EVOI-Inspired Prioritization Heuristic (EIPH)**:
+
+$$\text{EIPH Score} = \frac{I \times \left[ P(\text{success}) \times V_{\text{success}} - (1 - P(\text{success})) \times C_{\text{fail}} \right] \times R}{T_{\text{evidence}} \times C_{\text{exp}}}$$
 
 * **Information Gain ($I$):** 1.0–5.0 measure of how decisively the experiment eliminates the focal uncertainty.
 * **Reversibility ($R$):** 1.0 for reversible two-way doors (Mom Test, Concierge proxy); 0.2–0.5 for one-way doors (heavy schema rewrites, legal entities).
 * **The 4-Hour Acid Test:** If an experiment requires $> 48$ hours, the agent must propose a 4-hour proxy (e.g. manual script execution + email report) that captures 80% of the signal.
 
 ### 5. Intake Evidence Audits: Routes C & D
-* **Route C (Service-to-Software Productization Audit):** Having 4 paying consulting clients does not prove SaaS readiness. Enforces the 5-Question Audit (`templates/service_to_software_audit.md`) verifying value source, workflow repeatability, labor decoupling, founder absence, and software-only willingness-to-pay. Score $\ge 4/5$ required to advance to specification; $<4/5$ routes to Concierge MVP or productized service.
+* **Route C (6-Question Service-to-Software Productization Audit):** Having 4 paying consulting clients does not prove SaaS readiness. Enforces the 6-Question Audit (`templates/service_to_software_audit.md`) verifying value source, workflow repeatability, labor decoupling, founder absence tolerance, software-only willingness-to-pay, and zero-human outcome equivalence. Score $\ge 5/6$ required to advance to specification; $<5/6$ routes to Concierge MVP or productized service.
 * **Route D (Working Code Audit):** Pre-built code without paying customers routes to Layer 2 Riskiest Assumption Testing (RAT) to isolate willingness-to-pay before writing more software.
 
 ### 6. Contradiction Detection & Strategic Reconciliation
@@ -307,7 +309,7 @@ When newly discovered research or test data conflicts with earlier premises:
 * Progression is frozen until an explicit [Strategic Reconciliation Memo](templates/strategic_reconciliation_memo.md) is appended to `.microsaas/decision-log.md` deciding whether to pivot the wedge, redesign the solution, or kill the venture.
 
 ### 7. Circuit Breaker & Anti-Jitter Architecture
-* **Circuit Breaker (Stagnant Loop Guard):** Trips strictly on repetitive stagnant loops without new 4D evidence. Explicitly permits legitimate solution redesigns, wedge repositioning, and external environmental shifts (API revocations).
+* **Evidence-Aware Circuit Breaker:** Trips strictly on repetitive stagnant loops without new 4D evidence. Explicitly permits legitimate solution redesigns, wedge repositioning, and external environmental shifts (API revocations, new competitors).
 * **Conversational Anti-Jitter:** Casual dialogic brainstorming does not thrash persistent state in `.microsaas/state.json` without verified evidence or explicit founder gate confirmation.
 
 ### 8. Archetype-Calibrated Pre-Registered Kill Criteria
@@ -316,8 +318,12 @@ Universal 30-day / 500-visitor rules fail across diverse business models. Criter
 * **Archetype B (Prosumer / Indie B2B, $19–$79/mo):** 30–45 days, 200 activated users; kill if $< 5$ subscribers or Month-1 retention $< 40\%$.
 * **Archetype C (High-Ticket B2B / Compliance, $99–$500+/mo):** 45–60 days, 15 Mom Test calls; kill if $< 2$ paid pilots / LOIs.
 
-### 9. Formal Capability Transition Contracts
-Every node in Layer 2 operates under a formal contract defining inputs, preconditions, outputs, required evidence, state mutations, and failure fallbacks (detailed in [`templates/capability_contracts.md`](templates/capability_contracts.md)).
+### 9. Formal Capability Transition Contracts & Machine-Readable Output
+Every node in Layer 2 operates under a formal contract defining inputs, preconditions, outputs, required evidence, state mutations, and emits a validated JSON document matching [`templates/capability_result_schema.json`](templates/capability_result_schema.json).
+
+### 10. Persistent State Integrity & Decision Replay Engine
+* **Atomic State Persistence (`tools/state_manager.py`):** Multi-process safe atomic writes with automatic `.bak` recovery and schema version migrations.
+* **Decision Replay Engine (`tools/replay_engine.py`):** Immutable event stream (`.microsaas/events.jsonl`) recording context, evidence snapshots, governor reasoning, and decisions for 100% reproducible auditing.
 * **Contextual Inertia:** Clarifying questions and "what-if" musings are answered within the active skill without resetting state.
 * **Materiality Threshold:** Changing the active lifecycle stage requires completing a formal gate artifact or verifying a high-confidence pivot/kill trigger.
 * **Circuit Breaker:** If an idea bounces between any two skills $\ge 3$ times without producing new evidence, the Hub halts the loop and forces a binary 48-hour resolution decision.
@@ -484,30 +490,49 @@ py tools/evaluate_system.py \
 
 ---
 
-## 🧪 Automated 12-Scenario Verification Test Suite
+## 🧪 The 3-Tier Verification & Adversarial Benchmark Architecture
 
-To verify that the Layer 1 Meta-Governor and Layer 2 Capability Graph maintain rigorous operational fidelity without human oversight or regression, run the automated scenario suite:
+To guarantee that the Layer 1 Meta-Governor and Layer 2 Capability Graph maintain rigorous operational fidelity, Micro-SaaS Founder OS implements a **3-tier testing hierarchy**:
 
+```text
+┌────────────────────────────────────────────────────────────────────────┐
+│                   THE 3-TIER VERIFICATION HIERARCHY                    │
+├────────────────────┬───────────────────────────────────────────────────┤
+│ Tier 1: Unit       │ Validates EIPH formula, state mutations, schema   │
+│                    │ validation, and atomic write operations.          │
+├────────────────────┼───────────────────────────────────────────────────┤
+│ Tier 2: Integration│ Tests cross-capability state handoffs, event-log  │
+│                    │ stream persistence, and replay reconstruction.    │
+├────────────────────┼───────────────────────────────────────────────────┤
+│ Tier 3: Adversarial│ 50 stress-test scenarios verifying reasoning      │
+│         Benchmark  │ quality under ambiguity, platform traps & noise.  │
+└────────────────────┴───────────────────────────────────────────────────┘
+```
+
+### 1. Running the 12-Scenario Meta-Governor Verifier:
 ```bash
 py tests/test_meta_governor.py
 ```
 
-### Verified Operational Scenarios:
-| # | Scenario Tested | Architectural Behavior Verified | Status |
-| :-: | :--- | :--- | :---: |
-| **1** | **Raw Idea Intake (Route A)** | Diagnoses raw state; routes to discovery/research; blocks premature spec/code. | `PASSED` |
-| **2** | **Clear Problem Intake (Route B)** | Disambiguates problem fit from solution fit; routes to Red Team audit. | `PASSED` |
-| **3A**| **Consulting Traction (Route C Fails)** | 5-Question Productization Audit detects manual labor/empathy dependency; blocks pure SaaS build. | `PASSED` |
-| **3B**| **Consulting Traction (Route C Passes)** | Audit verifies $\ge 90\%$ repeatability & founder decoupling; fast-forwards to PR/FAQ spec. | `PASSED` |
-| **4** | **Working Code without Evidence (Route D1)**| Flags missing willingness-to-pay; halts further coding; routes to RAT. | `PASSED` |
-| **5** | **Working Code with Paying Users (Route D2)**| Validates payment proof; fast-forwards to distribution and metrics scaling. | `PASSED` |
-| **6** | **Fatal Platform Risk Contradiction** | Flags platform TOS revocation/incumbent release; freezes progression; triggers reconciliation memo. | `PASSED` |
-| **7** | **Solution Pushback (Kill Solution)** | Customer rejects UI but keeps problem; falsifies solution hypothesis; preserves ICP; re-anchors delivery. | `PASSED` |
-| **8** | **Wedge Pushback (Kill Wedge)** | Target segment price-sensitive; preserves core technology; resets ICP to high-budget enterprise. | `PASSED` |
-| **9** | **Terminal Rejection (Kill Venture)** | Problem trivial across all segments; marks venture killed; permanently blocks downstream execution. | `PASSED` |
-| **10**| **EVOI Prioritization (Tech Spike)** | Scores 4-hour Python spike significantly higher than speculative 14-day database build. | `PASSED` |
-| **11**| **Broken Unit Economics** | Negative net cash margin after Stripe & API fees trips economic circuit breaker; suspends marketing/code. | `PASSED` |
-| **12**| **Conversational Anti-Jitter Guard** | Casual brainstorm dialogue does not thrash persistent venture state without 4D evidence. | `PASSED` |
+### 2. Running the 50-Scenario Adversarial Governor Benchmark:
+```bash
+py tests/adversarial_benchmark.py
+```
+
+### 3. Replaying Venture Decisions via Event Stream:
+```bash
+py tools/replay_engine.py --log ".microsaas/events.jsonl" --verify
+py tools/replay_engine.py --log ".microsaas/events.jsonl" --summary
+```
+
+### Summary of Adversarial Benchmark Coverage (50 Scenarios):
+* **False Traction Traps (Scenarios 1–10):** 100k vanity views, free beta promises, family pledges, AppSumo LTD distortion, and newsletter vanity metrics.
+* **Platform Risk & Incumbent Traps (Scenarios 11–18):** Undocumented APIs, native feature copies, token cost spikes, robots.txt bans, and GDPR residency blockers.
+* **4D Evidence Quality & Echo Chambers (Scenarios 19–26):** Echo-chamber PR wires, stale 2023 pricing, single interview non-generalizability, direct contract proof.
+* **Unit Economics & Margin Failures (Scenarios 27–32):** High fulfillment COGS, thin micro-subscription margins (<40%), zero-price traps, high return rates.
+* **Circuit Breaker & Hysteresis (Scenarios 33–38):** Stagnant loops blocked, environmental shifts permitted, casual question anti-jitter damping, 3-iteration forced kill check.
+* **9-Tier Autonomy Boundaries (Scenarios 39–44):** Autonomous local tests vs. Hard Stop on spending real money, customer PII access, production deploy, and resource deletion.
+* **State Integrity & Replay Engine (Scenarios 45–50):** Schema validation, v4-to-v6 migration, atomic backup recovery, and detecting unapproved Tier 3 actions.
 
 ---
 
@@ -529,9 +554,10 @@ Also explore the [**40 Micro-SaaS Vetted Ideas Catalog**](docs/40_micro_saas_ide
 ## 📑 Ready-to-Use Founder Templates
 
 Copy-paste templates located in [`templates/`](templates/):
-* `venture_state_schema.json`: Structured operational venture state schema (Layer 3).
+* `venture_state_schema.json`: Structured operational venture state schema (Layer 3 v6).
+* `capability_result_schema.json`: Standardized machine-readable contract output schema for Layer 2 capabilities.
 * `capability_contracts.md`: Formal transition contracts for Layer 2 execution capabilities.
-* `service_to_software_audit.md`: 5-Question Productization Audit for consulting/agency conversions (Route C).
+* `service_to_software_audit.md`: 6-Question Productization Audit for consulting/agency conversions (Route C).
 * `opportunity_cost_evaluation.md`: EVOI scoring and 4-Hour Acid Test proxy prioritization.
 * `opportunity_scoring_rubric.md`: 7-dimension opportunity evaluation (/35).
 * `competitive_audit_template.md`: Red Team Strategic Decision Memo (Fatal risks, asymmetric wedge).

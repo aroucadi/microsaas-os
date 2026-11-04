@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CapabilityExecutionResult",
+  "description": "Standardized machine-readable contract output emitted by each Layer 2 execution capability",
+  "type": "object",
+  "required": [
+    "capability",
+    "execution_id",
+    "timestamp",
+    "status",
+    "decision",
+    "focal_hypothesis_id",
+    "evidence_references",
+    "confidence_assessment",
+    "unresolved_risks",
+    "next_recommended_capability",
+    "requires_founder_approval"
+  ],
+  "properties": {
+    "capability": {
+      "type": "string",
+      "enum": [
+        "microsaas-discovery",
+        "microsaas-research",
+        "microsaas-validation",
+        "microsaas-product",
+        "engineering_and_build",
+        "microsaas-distribution",
+        "microsaas-metrics"
+      ]
+    },
+    "execution_id": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "failed", "partially_completed", "blocked"]
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "advance_to_next",
+        "pivot_solution",
+        "pivot_wedge",
+        "pivot_channel",
+        "pivot_pricing",
+        "revise_core_loop",
+        "kill_venture",
+        "repeat_experiment_proxy"
+      ]
+    },
+    "focal_hypothesis_id": { "type": "string" },
+    "hypothesis_status": {
+      "type": "string",
+      "enum": ["validated", "falsified", "inconclusive", "untested"]
+    },
+    "evidence_references": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence_assessment": {
+      "type": "object",
+      "required": ["reliability", "strength", "recency", "independence"],
+      "properties": {
+        "reliability": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "strength": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "recency": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "independence": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+      }
+    },
+    "unresolved_risks": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_recommended_capability": { "type": "string" },
+    "requires_founder_approval": { "type": "boolean" },
+    "artifacts_produced": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
