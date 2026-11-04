@@ -14,45 +14,45 @@ from datetime import datetime
 DIMENSIONS = [
     {
         "id": "correctness",
-        "name": "Correctness",
+        "name": "Correctness & Execution Verification",
         "weight": 0.20,
-        "question": "Does the AI produce factually correct outputs without hallucination?"
+        "question": "Does the AI produce factually correct outputs and verify tool/test executions without hallucination?"
     },
     {
         "id": "evidence_quality",
-        "name": "Evidence Quality",
+        "name": "Evidence Quality & Confidence Calibration",
         "weight": 0.20,
-        "question": "Are all market claims, pricing, and competitors grounded in verifiable sources?"
+        "question": "Are all market claims, pricing, and competitors calibrated with clear confidence tiers (L1-L4)?"
     },
     {
         "id": "decision_quality",
-        "name": "Decision Quality",
+        "name": "Decision Quality & Contradiction Detection",
         "weight": 0.20,
-        "question": "Did the AI make the right GO / NO-GO / PIVOT call (especially killing bad ideas)?"
+        "question": "Did the AI detect strategic contradictions and make the right GO / NO-GO / PIVOT call?"
     },
     {
         "id": "execution_quality",
         "name": "Execution Quality",
         "weight": 0.15,
-        "question": "Can the generated deliverables (brief, specs, scripts) actually be used in production?"
+        "question": "Can the generated deliverables (brief, specs, scripts) actually be used directly in production?"
     },
     {
         "id": "consistency",
-        "name": "Consistency",
+        "name": "Consistency & Routing Stability",
         "weight": 0.10,
-        "question": "Does the system apply the same rigorous standards across different business models?"
+        "question": "Does the system maintain routing hysteresis and avoid chaotic skill oscillation?"
     },
     {
         "id": "state_management",
-        "name": "State Management",
+        "name": "State Management & Living Memory",
         "weight": 0.05,
-        "question": "Does the system maintain decisions and evidence across sessions without context loss?"
+        "question": "Does the system maintain decisions, source ledgers, and state across sessions without context loss?"
     },
     {
         "id": "commercial_outcomes",
         "name": "Commercial Realism",
         "weight": 0.10,
-        "question": "Are unit economics, monetization models, and conversion assumptions realistic?"
+        "question": "Are unit economics, monetization models, and conversion assumptions grounded in real market data?"
     }
 ]
 

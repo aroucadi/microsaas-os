@@ -25,7 +25,23 @@ Traditional AI coding assistants eagerly write thousands of lines of boilerplate
 
 ## 🏛️ System Architecture
 
-Micro-SaaS Founder OS organizes the startup journey into a disciplined pipeline orchestrated by `microsaas-hub` and executed across 7 specialized Antigravity skills.
+Micro-SaaS Founder OS is an **adaptive state engine and meta-governed venture operating system**, not a sequential conveyor belt. It actively senses epistemic uncertainty, dampens conversational noise, and dynamically routes work to where the highest startup risk lies.
+
+```mermaid
+flowchart TD
+    A["Founder Input / Event"] --> B["Context & Epistemic Sensor"]
+    B --> C["Living Memory <code>(.microsaas/)</code>"]
+    C --> D["Meta-Orchestrator & Governance Engine"]
+    D --> E["Confidence Scoring & Contradiction Check"]
+    E --> F["Uncertainty Ranking & Hysteresis Filter"]
+    F --> G["Dynamic Skill Router"]
+    G --> H["Specialist Skill Execution"]
+    H --> I["Tool Execution Verification"]
+    I --> J["State & Decision Update"]
+    J --> B
+    D --> K["Kill Switch & Circuit Breaker"]
+    K --> J
+```
 
 ### The 8-Step Pre-Code Operating Protocol
 
@@ -41,6 +57,37 @@ flowchart TD
     S6 --> S7["Step 7: Pre-Mortem & Kill Criteria Gate<br/><code>Top 3 Failure Modes & Reversal Conditions</code>"]
     S7 --> S8["🚀 Step 8: Coding Begins<br/><code>Walking Skeleton ➔ First Customer Gate</code>"]
 ```
+
+---
+
+## ⚖️ Meta-Governance & Decision Engine (Elite 10/10 Architecture)
+
+To ensure execution matches architectural intent, `microsaas-hub` enforces four advanced governance systems:
+
+### 1. Calibrated Confidence Scoring (L1–L4)
+Distinguishes empirical financial proof from casual internet comments:
+* **`[CONF=1.0]` (L4 - Empirical Reality):** Live Stripe payouts, verified bank transactions, executed test suites (exit code 0), signed pilot contracts.
+* **`[CONF=0.7]` (L3 - High Primary Signal):** Direct quotes from *Mom Test* interviews on past spending, official platform API docs/TOS, competitor checkout prices.
+* **`[CONF=0.4]` (L2 - Secondary Market Signal):** G2/Trustpilot reviews, Reddit complaint threads, search volume trends.
+* **`[CONF=0.1]` (L1 - Hypothesis / Fluff):** Survey promises ("I would buy this"), founder assumptions, LLM speculation.
+* *Rule:* No strategic **GO** recommendation can be grounded on evidence with aggregated confidence $< 0.70$.
+
+### 2. Contradiction Detection & Strategic Reconciliation
+When newly discovered research or test data conflicts with earlier premises (e.g. Discovery assumed zero competitors, but Research uncovered an active \$1M ARR incumbent):
+* The Hub flags `⚠️ [CONTRADICTION DETECTED]`.
+* Progression is immediately frozen until an explicit [Strategic Reconciliation Memo](templates/strategic_reconciliation_memo.md) is appended to `.microsaas/decision-log.md` detailing whether to pivot the wedge, trim scope, or kill the idea.
+
+### 3. Tool Execution Verification Guardrails
+Prevents hallucinated execution:
+* Research claims must link directly to primary URLs recorded in `source-ledger.md`.
+* Terminal commands and test suites must return exit code `0` with verified output logs.
+* Generated deliverables must exist on disk before state transitions are confirmed.
+
+### 4. Routing Hysteresis & Anti-Oscillation Damping
+Prevents chaotic skill jumping on minor conversational noise:
+* **Contextual Inertia:** Clarifying questions and "what-if" musings are answered within the active skill without resetting state.
+* **Materiality Threshold:** Changing the active lifecycle stage requires completing a gate artifact or verifying a high-confidence ($\ge 0.7$) pivot/kill trigger.
+* **Circuit Breaker:** If an idea bounces between any two skills $\ge 3$ times without producing new evidence, the Hub halts the loop and forces a binary 48-hour resolution decision.
 
 ---
 
@@ -224,6 +271,7 @@ Also explore the [**40 Micro-SaaS Vetted Ideas Catalog**](docs/40_micro_saas_ide
 Copy-paste templates located in [`templates/`](templates/):
 * `opportunity_scoring_rubric.md`: 7-dimension opportunity evaluation (/35).
 * `competitive_audit_template.md`: Competitor matrix and 6-moat scorecard (/30).
+* `strategic_reconciliation_memo.md`: Framework for resolving contradictions between new data and prior assumptions.
 * `riskiest_assumption_test.md`: Riskiest Assumption Testing (RAT) and experiment selector.
 * `mom_test_script_template.md`: Customer discovery interview script.
 * `pr_faq_template.md`: Amazon-style press release and FAQ with 1-sentence pitch.
