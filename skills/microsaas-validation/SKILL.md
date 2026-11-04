@@ -4,14 +4,14 @@ description: >-
   Pre-code customer discovery, Riskiest Assumption Testing (RAT), and demand validation for micro-SaaS.
   Use when testing whether people actually want an idea before writing software, identifying the single
   assumption that could kill the business, running Mom Test interviews, designing Concierge/Wizard of Oz
-  MVPs, or establishing pre-registered falsification gates.
+  MVPs, or evaluating evidence across the 3-tier termination model.
 ---
 
 # Micro-SaaS Idea Validation & Evidence Ledger (`microsaas-validation`)
 
 Use this skill to convert theoretical hypotheses into **observable commercial facts**. Never write a single line of application code without tangible proof that target customers experience real pain and are willing to commit time, reputation, or money to solve it.
 
-> **Core Principle:** Validate demand before validating your ability to build software.
+> **Core Principle:** Validate demand before validating your ability to build software. Disambiguate problem validation from solution validation.
 
 ---
 
@@ -25,16 +25,29 @@ Before designing any experiment or writing code, isolate the single assumption t
 3. **Distribution / Reachability Assumption:** We can cost-effectively reach these specific users where they already congregate.
 4. **Feasibility / Dependency Assumption:** The core technical value can be delivered without violating platform terms or relying on fragile hacks.
 
-### Separate Problem Fit from Solution Fit:
+### ⚠️ Crucial Disambiguation: Problem Fit $\neq$ Solution Fit
 * **Problem Validation:** *"Do you have this specific headache, and how much did your last workaround cost?"*
 * **Solution Validation:** *"Does our proposed approach actually solve it without introducing new friction?"*
-* **Warning:** A prospect having a problem does *not* automatically mean they want your proposed software solution. Always validate both.
+* **Warning:** A prospect experiencing severe pain does *not* automatically want your proposed software solution. They may prefer an employee, a spreadsheet, or an agency. Always validate both independently.
 
 ---
 
-## 🛠️ Step 2: Choose the Cheapest Meaningful Experiment
+## 🔬 Step 2: The 4-Dimensional Evidence Model
 
-Do not default to a rigid 14-day process. Select the experiment that directly tests your **Riskiest Assumption** with the least effort:
+Evaluate all incoming validation data across 4 dimensions:
+
+| Dimension | Evaluation Criteria | Example Strong Signal | Example Weak Signal |
+| :--- | :--- | :--- | :--- |
+| **Source Reliability** | Origin trustworthiness | Direct video interview with purchasing manager | Anonymous Reddit post |
+| **Evidence Strength** | Directness of support | Verified \$50 pre-order deposit | Survey answer: "Looks cool, would buy" |
+| **Recency** | Temporal relevance | Incurred expense within last 30 days | Paid for a tool 3 years ago |
+| **Independence** | Freedom from echo chambers | 5 unrelated clinics across 3 cities | 3 colleagues from the same Slack channel |
+
+---
+
+## 🛠️ Step 3: Choose the Cheapest Meaningful Experiment
+
+Select the experiment that directly tests your **Riskiest Assumption** with the least effort:
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -72,48 +85,32 @@ When speaking with potential users, adhere strictly to Rob Fitzpatrick's rules:
 3. **Listen 80% of the time, speak 20%.**
 
 ### The 5 Essential Mom Test Questions:
-1. *"When was the last time you had to deal with [problem]?"* (`[VERIFIED]` recency & frequency).
-2. *"Can you walk me through what you did step-by-step to handle it?"* (`[VERIFIED]` workflow & friction).
-3. *"What other solutions or tools did you try before settling on this?"* (`[VERIFIED]` active search behavior).
-4. *"What do you dislike about your current setup, and what does that workaround cost you in time or money?"* (`[VERIFIED]` severity).
-5. *"In the past 12 months, have you paid for any software, freelancer, or tool to help fix this?"* (`[VERIFIED]` willingness to pay).
-
-### The Commitment Ask at the End (Choose One):
-* **Time Commitment:** *"I’m testing a manual workflow prototype next Tuesday. Would you spend 15 minutes reviewing it with your actual data?"*
-* **Reputation Commitment:** *"Would you introduce me to the colleague who makes the purchasing decision for this workflow?"*
-* **Financial Commitment:** *"We are onboarding 5 founding users at $X/month with direct priority support. Would you like to reserve a spot?"*
+1. *"When was the last time you had to deal with [problem]?"* (Recency & frequency).
+2. *"Can you walk me through what you did step-by-step to handle it?"* (Workflow & friction).
+3. *"What other solutions or tools did you try before settling on this?"* (Active search behavior).
+4. *"What do you dislike about your current setup, and what does that workaround cost you in time or money?"* (Severity).
+5. *"In the past 12 months, have you paid for any software, freelancer, or tool to help fix this?"* (Willingness to pay).
 
 ---
 
-## 🛑 Pre-Registered Falsification Gates
+## 🛑 Step 4: The 3-Tier Decision Gate (Precision Killing)
 
-Before spending money on ads or hours on interviews, pre-register the exact pass/fail criteria in `.microsaas/state.json`:
+When validation results arrive, avoid blunt terminal decisions. Apply the **3-Tier Decision Model**:
 
-```markdown
-# Riskiest Assumption & Falsification Plan
+```mermaid
+flowchart TD
+    RESULTS["Validation Data / Experiment Results"] --> EVAL{Evaluate Evidence}
 
-- **Riskiest Assumption:** [e.g., Shopify store owners will pay $29/mo for automated stock alerts]
-- **Chosen Experiment:** [Mom Test / Concierge / Wizard of Oz / Smoke Page / Paid Pilot]
-- **Sample Size / Target Quota:** [e.g., 8 interviews conducted OR 200 targeted visitors]
-
-### Pass / Fail Falsification Thresholds:
-- **PASS Criteria:** [e.g., At least 3 prospects show proof of paying for alternatives AND 2 agree to a paid pilot]
-- **FAIL Criteria:** [e.g., Prospects claim interest but zero show past spending or commit to trial]
-- **Action on Fail:** Stop development immediately. Revisit problem discovery or pivot ICP.
+    EVAL -->|"High WTP & Solution Accepted"| PASS["PROCEED TO PRODUCT<br/>(PR/FAQ & Specs)"]
+    EVAL -->|"Pain is real, but proposed tool rejected"| K_SOL["KILL THE SOLUTION<br/>(Keep problem & ICP; pivot delivery format)"]
+    EVAL -->|"Problem exists, but this segment won't pay"| K_WDG["KILL THE WEDGE<br/>(Keep technology; pivot to higher-budget ICP)"]
+    EVAL -->|"No pain, free workarounds suffice, zero budget"| K_VEN["KILL THE VENTURE<br/>(Terminal shutdown; record learnings)"]
 ```
 
----
-
-## 📈 Post-Beta Signal: Sean Ellis 40% Test
-
-Once early users experience the core workflow (via Concierge, Wizard of Oz, or initial Walking Skeleton), ask:
-> *"How would you feel if you could no longer use this product?"*
-> 1. Very disappointed
-> 2. Somewhat disappointed
-> 3. Not disappointed (it isn't really that useful)
-> 4. N/A – I no longer use it
-
-*Benchmark:* If **$\ge 40\%$** answer **"Very disappointed"**, you have early signal of product-market fit. If $< 40\%$, do not scale marketing—iterate on the core workflow.
+1. **Pass (Skin in the Game):** Prospects demonstrate willingness to pay (paid deposits, confirmed past software spend, or signed pilot). $\rightarrow$ **Advance to `microsaas-product`**.
+2. **Kill the Solution:** The problem is urgent and customers spend money, but they reject your proposed software interface (e.g. they want a spreadsheet plugin, not another dashboard). $\rightarrow$ **Redesign the solution format without abandoning the opportunity**.
+3. **Kill the Wedge:** The problem is valid, but the target niche is too small or price-sensitive. $\rightarrow$ **Pivot the ICP to an enterprise or well-funded vertical**.
+4. **Kill the Venture:** Extensive interviews reveal the problem is minor, users are happy with free workarounds, and zero commercial intent exists anywhere. $\rightarrow$ **Terminal Shutdown. Save months of wasted coding.**
 
 ---
 
@@ -121,7 +118,7 @@ Once early users experience the core workflow (via Concierge, Wizard of Oz, or i
 
 Save all observable outcomes in `validation-ledger.md`:
 * The isolated Riskiest Assumption and chosen experiment.
-* Exact quotes, past tools used, and dollars previously spent by prospects.
-* Gate Results: Did the experiment meet the pre-registered PASS criteria?
-* Final Recommendation: **PROCEED TO PRODUCT / PIVOT / KILL**.
+* 4D Evidence Ratings for every cited customer interaction.
+* Problem Fit vs Solution Fit assessment.
+* Decision Gate Verdict: **PROCEED TO PRODUCT / KILL SOLUTION / KILL WEDGE / KILL VENTURE**.
 * Human Sign-Off Checkpoint.

@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MicroSaaSVentureState",
+  "description": "Operational structured state model for Micro-SaaS Founder OS (Layer 3)",
+  "type": "object",
+  "required": [
+    "venture_id",
+    "project_name",
+    "state_version",
+    "last_updated",
+    "maturity_stage",
+    "active_capability",
+    "highest_risk_uncertainty",
+    "active_hypotheses",
+    "verified_facts",
+    "contradictions",
+    "experiments",
+    "decisions",
+    "blocked_actions",
+    "next_best_action"
+  ],
+  "properties": {
+    "venture_id": { "type": "string" },
+    "project_name": { "type": "string" },
+    "state_version": { "type": "integer", "minimum": 1 },
+    "last_updated": { "type": "string", "format": "date-time" },
+    "maturity_stage": {
+      "type": "string",
+      "enum": [
+        "intake_triage",
+        "market_research",
+        "rat_validation",
+        "product_specification",
+        "walking_skeleton_build",
+        "first_customer_testing",
+        "distribution_launch",
+        "metrics_optimization",
+        "killed_venture",
+        "scaled_venture"
+      ]
+    },
+    "active_capability": { "type": "string" },
+    "highest_risk_uncertainty": { "type": "string" },
+    "active_hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "statement", "category", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "statement": { "type": "string" },
+          "category": { "type": "string", "enum": ["problem", "solution", "wtp", "distribution", "feasibility"] },
+          "status": { "type": "string", "enum": ["untested", "testing", "validated", "falsified"] }
+        }
+      }
+    },
+    "verified_facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "statement", "source_url", "reliability", "strength", "recency", "independence"],
+        "properties": {
+          "id": { "type": "string" },
+          "statement": { "type": "string" },
+          "source_url": { "type": "string" },
+          "reliability": { "type": "string", "enum": ["high", "medium", "low"] },
+          "strength": { "type": "string", "enum": ["direct", "indirect", "hypothetical"] },
+          "recency": { "type": "string" },
+          "independence": { "type": "string", "enum": ["primary", "secondary", "echo"] }
+        }
+      }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "prior_claim_id", "conflicting_fact_id", "severity", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "prior_claim_id": { "type": "string" },
+          "conflicting_fact_id": { "type": "string" },
+          "severity": { "type": "string", "enum": ["fatal", "serious", "minor"] },
+          "status": { "type": "string", "enum": ["open", "reconciled"] },
+          "reconciliation_memo_ref": { "type": "string" }
+        }
+      }
+    },
+    "experiments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "target_sample", "completed", "pass_criteria", "outcome"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string", "enum": ["mom_test", "concierge", "wizard_of_oz", "smoke_page", "tech_spike"] },
+          "target_sample": { "type": "integer" },
+          "completed": { "type": "integer" },
+          "pass_criteria": { "type": "string" },
+          "outcome": { "type": "string", "enum": ["in_progress", "passed", "pivot_signal", "failed"] }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "rationale", "approved_by_founder", "timestamp"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string", "enum": ["advance", "kill_solution", "kill_wedge", "kill_venture", "fast_forward"] },
+          "rationale": { "type": "string" },
+          "approved_by_founder": { "type": "boolean" },
+          "timestamp": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "blocked_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_best_action": {
+      "type": "object",
+      "required": ["action", "allocated_time", "permission_tier"],
+      "properties": {
+        "action": { "type": "string" },
+        "allocated_time": { "type": "string" },
+        "permission_tier": { "type": "string", "enum": ["tier_1_autonomous", "tier_2_notification", "tier_3_founder_approval"] }
+      }
+    }
+  }
+}

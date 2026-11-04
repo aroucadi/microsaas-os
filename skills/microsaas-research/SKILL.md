@@ -3,100 +3,97 @@ name: microsaas-research
 description: >-
   Market research, competitive intelligence, and opportunity evaluation for micro-SaaS.
   Use when analyzing competitors, evaluating market saturation, checking pricing benchmarks,
-  identifying incumbent vulnerabilities, calibrating evidence confidence, or making a GO / NO-GO decision.
+  identifying incumbent vulnerabilities, calibrating evidence confidence, or crafting a Red Team Decision Memo.
 ---
 
 # Micro-SaaS Market Research & Adversarial Intelligence (`microsaas-research`)
 
 Use this skill to rigorously audit competitors, detect contradictions with early assumptions, and determine whether entering a market is commercially viable. **Your primary duty here is to challenge the idea and attempt to disprove it**, not to confirm the founder's excitement.
 
-> **Research Axiom:** An unverified competitor claim is worth 0. Ground all findings in accessible primary URLs with confidence calibration.
+> **Research Axiom:** An unverified competitor claim is worth 0. Ground all findings in accessible primary URLs using the 4D Evidence Model.
 
 ---
 
 ## 🔬 The 4-Part Research Protocol
 
-### Part 1: Verify the Competitive Reality (Confidence-Calibrated)
+### Part 1: Verify the Competitive Reality (4D Evidence Calibrated)
 Search for 3 to 6 actual, verifiable alternatives across three tiers:
 1. **Direct Competitors:** Software or services offering substantially the same solution.
 2. **Free Workarounds / Platform Native Tools:** Free native features (e.g. AWS free tier, Google Sheets, Canva, Zapier free).
 3. **Enterprise Goliaths:** Large VC-backed or public companies.
 
 For each competitor, record in `source-ledger.md`:
-* **Product Name & Live URL** (`[CONF=0.7]` — must cite live URL)
-* **Pricing Model & Public Price Points** (`[CONF=0.7]` — cite pricing page URL)
-* **What Customers Complain About** (`[CONF=0.4]` — cite G2, Trustpilot, or Reddit complaints)
-* **Market Position:** Bootstrapped micro-SaaS or funded scale-up?
+* **Product Name & Live URL** (`[Reliability: High, Strength: Direct]`)
+* **Pricing Model & Public Price Points** (cite live pricing page URL)
+* **What Customers Complain About** (cite G2, Trustpilot, or Reddit complaints)
+* **Recency & Independence:** Is the pricing fresh (< 6 months) and verified independently?
 
 ---
 
 ### Part 2: Contradiction Detection Check
 
-Before calculating moat scores, cross-check newly discovered competitor facts against earlier discovery claims in `opportunity-brief.md`:
-* **Check A (Competitor Non-Existence):** If discovery claimed *"No tool exists for this"*, but research found 2 active competitors $\rightarrow$ Flag `⚠️ [CONTRADICTION DETECTED]`.
+Before crafting the strategic memo, cross-check newly discovered competitor facts against earlier discovery claims in `opportunity-brief.md`:
+* **Check A (Competitor Non-Existence):** If discovery claimed *"No tool exists for this"*, but research found active competitors $\rightarrow$ Flag `⚠️ [CONTRADICTION DETECTED]`.
 * **Check B (Pricing Feasibility):** If discovery assumed users will pay \$49/mo, but research shows incumbents offering it for free or \$5/mo $\rightarrow$ Flag `⚠️ [CONTRADICTION DETECTED]`.
 
-*Rule:* If any fatal contradiction is uncovered, immediately trigger the **Strategic Reconciliation Memo** before issuing any GO verdict.
+*Rule:* If any fatal contradiction is uncovered, immediately trigger a [Strategic Reconciliation Memo](templates/strategic_reconciliation_memo.md) before issuing any GO recommendation.
 
 ---
 
-### Part 3: The Competitive Intensity & Moat Assessment
+### Part 3: The Red Team Strategic Decision Memo (No Arbitrary Score Cutoffs)
 
-Score the market across these 6 dimensions (1 to 5 points each):
+Instead of relying on an arbitrary numerical score (e.g. 18/30), the Adversarial Red Team produces a structured strategic decision memo answering four foundational questions:
 
-| Dimension | Favorable (Score = 5) | Unfavorable (Score = 1) |
-| :--- | :--- | :--- |
-| **1. Incumbent Bloat** | Competitors are complex, enterprise-only, and require sales calls. | Competitors have clean, self-serve $9/mo tools with instant onboarding. |
-| **2. Free Alternative Threat** | No free tool exists; manual workarounds take hours. | Big tech / platform vendors provide this natively for free. |
-| **3. Switching Friction** | Users can adopt our tool alongside existing tools in 60s. | Requires database migrations, DNS changes, or team retraining. |
-| **4. Distribution Accessibility** | Clear organic channels (niche Reddit, programmatic SEO, TikTok). | Dominated by competitors with $30+ Google Ads CPCs and enterprise sales reps. |
-| **5. Pricing Power** | High willingness to pay relative to cost (clear positive ROI). | Extreme price compression; race to the bottom by cheap clones. |
-| **6. Build Feasibility** | Solo founder can build and maintain the core value loop in $\le 10$ days. | Requires complex infrastructure, enterprise compliance (SOC2), or heavy ops. |
+#### 1. Fatal Risks (Mandatory Investigation):
+* Can an established platform (Shopify, Google, Apple, AWS) wipe out this product as a minor quarterly release?
+* Does the business rely on scraping, private APIs, or fragile platform hacks subject to sudden revocation?
+* Are customer acquisition costs (Google Ads CPC $> \$20$) structurally higher than what a micro-SaaS can afford?
 
-*Passing Threshold:* Must score **$\ge 22 / 30$** to proceed to the Red Team challenge.
+#### 2. Structural Incumbent Weaknesses (Where They Are Vulnerable):
+* Are competitors bloated, enterprise-only, and forcing mandatory sales demos with 12-month lock-in?
+* Are existing solutions complex, requiring hours of onboarding and developer setup?
+* Do user reviews repeatedly complain about slow customer support, bug-ridden interfaces, or excessive price hikes?
 
----
+#### 3. Asymmetric Wedge Definition (How We Win):
+* **Speed Wedge:** Can the customer realize value in under 60 seconds without onboarding calls or configuration?
+* **Micro-Niche Wedge:** Are we hyper-tailored to a neglected vertical (e.g. Shopify apparel stores with perishable batch tracking) that Goliaths ignore?
+* **Monetization Wedge:** Do we offer transparent pay-as-you-go or flat micro-pricing without contracts?
 
-### Part 4: The Adversarial Red Team Challenge (Mandatory Falsification)
-
-Before issuing a recommendation, assume the persona of an **adversarial venture partner and skeptical competitor**. Forcefully answer these 3 killer questions:
-
-1. **The Goliath Kill Question:** *"If an established incumbent (or Google/Shopify/AWS) added this as a minor feature update next quarter, does our business die overnight?"*
-2. **The Payment Resistance Question:** *"Why will a rational customer refuse to pay us $X and simply stick with their current free workaround (even if messy)?"*
-3. **The Hidden Nightmare Question:** *"What is the hidden technical, customer support, or legal landmine that will destroy the solo founder's lifestyle?"*
+#### 4. Unresolved Uncertainties (Targeted Experiments):
+* What critical assumption remains unproven? (e.g. "Do merchants care enough about audit compliance to pay \$49/mo?").
+* Formulate the exact Riskiest Assumption Test (RAT) needed to eliminate this uncertainty.
 
 ---
 
-### Part 5: The GO / PIVOT / NO-GO Decision Rules
+### Part 4: Strategic Recommendations (3-Tier Precision)
 
-Synthesize the audit and output an unyielding verdict:
+Synthesize the audit into one of four clear recommendations:
 
-* 🟢 **GO (Green Light):**
-  * Moat Score $\ge 22/30$.
-  * All claims verified with confidence $\ge 0.70$.
-  * Incumbents have verified, structural weaknesses (bloat, enterprise sales friction, or high prices).
-  * Survived all 3 Red Team killer questions with a clear asymmetric wedge (Speed, Micro-Niche, or Pricing Model).
-  * $\rightarrow$ **Action:** Proceed to `microsaas-validation`.
+* 🟢 **PROCEED TO RAT VALIDATION (Green Light):**
+  * Competitors verified with direct URLs. Incumbents have structural weaknesses.
+  * Survived all 3 Red Team killer questions with an identifiable asymmetric wedge.
+  * $\rightarrow$ **Action:** Route to `microsaas-validation` to test the single unresolved uncertainty.
 
-* 🟡 **PIVOT (Yellow Light):**
-  * Moat Score $16–21/30$.
-  * Demand is verified, but head-to-head competition is too intense or commodity risk is high.
-  * $\rightarrow$ **Action:** Narrow the target ICP, shift to an underserved vertical, or change the monetization format.
+* 🟡 **KILL THE WEDGE (Reposition ICP):**
+  * The problem is valid, but the target customer segment is too price-sensitive or dominated by cheap clones.
+  * $\rightarrow$ **Action:** Keep the core problem; pivot to an underserved niche with budget.
 
-* 🔴 **NO-GO / KILL (Red Light):**
-  * Moat Score $< 16/30$, OR the idea fails any of the 3 Red Team killer questions, OR unresolvable fatal contradiction detected.
-  * Platform native tools provide this for free, or customer acquisition costs will exceed lifetime value.
-  * $\rightarrow$ **Action:** Terminate the idea immediately. Document the exact rationale in `.microsaas/decision-log.md` and return to `microsaas-discovery`.
+* 🟡 **KILL THE SOLUTION (Redesign Delivery):**
+  * The customer pain is verified, but competitors have already commoditized the SaaS interface.
+  * $\rightarrow$ **Action:** Shift from standalone software to a lightweight browser extension, API micro-service, or Concierge model.
+
+* 🔴 **KILL THE VENTURE (Terminal Red Light):**
+  * Platform native tools provide this for free, switching friction is near-impossible, or fatal legal/TOS blocks exist.
+  * $\rightarrow$ **Action:** Halt the project immediately. Record findings in `.microsaas/decision-log.md` and return to the opportunity backlog.
 
 ---
 
 ## 📄 Required Output Artifact
 
 Save the complete findings in `competitive-audit.md`:
-1. Competitor Comparison Table (URLs, pricing, verified complaints, Confidence Scores).
+1. Competitor Comparison Table (URLs, pricing, verified complaints, 4D evidence ratings).
 2. Contradiction Check Summary (Verified or Reconciled).
-3. Moat Assessment Scorecard (/30).
-4. The Adversarial Red Team Audit (The 3 answers).
-5. Asymmetric Wedge Definition.
-6. Blunt Verdict: **GO / PIVOT / NO-GO**.
-7. Human Sign-Off Checkpoint.
+3. The Red Team Strategic Decision Memo (Fatal Risks, Incumbent Weaknesses, Asymmetric Wedge).
+4. Unresolved Uncertainties & Recommended RAT Experiment.
+5. Action Verdict: **PROCEED TO RAT / KILL WEDGE / KILL SOLUTION / KILL VENTURE**.
+6. Human Sign-Off Checkpoint.

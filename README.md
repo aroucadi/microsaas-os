@@ -23,11 +23,12 @@ Traditional AI coding assistants eagerly write thousands of lines of boilerplate
 
 ---
 
-## 🏛️ The Master Two-Layer Architecture
+## 🏛️ The Three-Layer Venture Architecture
 
-Micro-SaaS Founder OS is structured as two interacting layers:
-* **Layer 1: Meta-Orchestration & Governance (The Supervisory Brain):** Continuously senses founder input, evaluates evidence confidence, checks for strategic contradictions, filters conversational noise via hysteresis, and dynamically routes to the highest-risk uncertainty.
-* **Layer 2: Venture Execution State Graph (The Topographical Map):** The full, rich startup state machine with nested states, multi-route intake, explicit evidence gates, development feedback loops, and commercial metrics.
+Micro-SaaS Founder OS is structured as three decoupled, interacting operational layers:
+* **Layer 1: Meta-Governor (The Supervisory Brain):** Continuously senses founder input, evaluates 4D evidence confidence, checks for strategic contradictions, filters conversational noise via hysteresis, enforces autonomy permission gates, and dynamically routes to the highest-risk uncertainty.
+* **Layer 2: Venture Execution Capability Graph (The Topographical Map):** Specialist venture capabilities (Discovery, Research, Validation, Product, Build, Growth, Metrics) connected by verified risk reduction.
+* **Layer 3: Evidence & State Infrastructure (`.microsaas/`):** Persistent machine-readable venture state (`state.json`), calibrated 4D source ledger, and audited decision logs.
 
 > **The Architectural Rule:** The Execution Graph determines what states and transitions are possible. The Meta-Governor determines which transition makes sense right now.
 
@@ -35,119 +36,113 @@ Micro-SaaS Founder OS is structured as two interacting layers:
 flowchart TD
     INPUT["Founder Input / External Event"] --> SENSOR
 
-    subgraph GOV["LAYER 1: META-ORCHESTRATION & GOVERNANCE (Supervisory Brain)"]
+    subgraph L1["LAYER 1: META-GOVERNOR (Supervisory Intelligence)"]
         SENSOR["Context & Epistemic Sensor"]
-        CONF["Confidence Calibration<br/><code>[CONF=0.1 - 1.0]</code>"]
+        EVAL_4D["4D Evidence Evaluator<br/><i>(Reliability, Strength, Recency, Independence)</i>"]
         CONTRA{"Contradiction<br/>Detected?"}
-        RECON["Strategic Reconciliation<br/><i>(Pivot / Trim / Kill)</i>"]
-        RISK["Highest-Risk Uncertainty Ranker"]
+        RECON["Strategic Reconciliation<br/><i>(Kill Solution vs Wedge vs Venture)</i>"]
+        OPP_COST["Opportunity Cost & Risk Ranker<br/><i>(Best use of next 4 hours?)</i>"]
         HYST["Routing Hysteresis & Damping"]
-        ROUTER["Dynamic Skill Router"]
+        AUTONOMY["Autonomy & Permission Gate<br/><i>(L1 Auto / L2 Propose / L3 Approval)</i>"]
+        ROUTER["Dynamic Capability Router"]
 
-        SENSOR --> CONF --> CONTRA
+        SENSOR --> EVAL_4D --> CONTRA
         CONTRA -->|"Yes (Conflict)"| RECON --> SENSOR
-        CONTRA -->|"No (Clear)"| RISK --> HYST --> ROUTER
+        CONTRA -->|"No (Coherent)"| OPP_COST --> HYST --> AUTONOMY --> ROUTER
     end
 
-    subgraph EXEC["LAYER 2: VENTURE EXECUTION STATE GRAPH (Topological Map)"]
-        subgraph S_TRIAGE["Intake & Triage"]
-            T1["Route A: Raw Idea"]
-            T2["Route B: Clear Problem"]
-            T3["Route C: Existing Traction"]
-            T4["Route D: Working Code"]
+    subgraph L2["LAYER 2: VENTURE EXECUTION CAPABILITY GRAPH"]
+        subgraph C_TRIAGE["Intake & Evidence Audit"]
+            T_RAW["Route A: Raw Idea"]
+            T_PROB["Route B: Clear Problem"]
+            T_TRAC["Route C: Existing Traction"]
+            T_CODE["Route D: Working Code (Evidence Audit)"]
         end
 
-        subgraph S_RESEARCH["Competitive Red Team"]
-            MOAT["Moat Analysis (/30)"]
-            RED_PASS["Moat >= 18 + Red Team Clear"]
-            RED_TRAP["Platform Trap / Incumbent Bloat"]
+        subgraph C_RESEARCH["Competitive Red Team"]
+            RED_AUDIT["Competitor Reality Audit"]
+            RED_MEMO["Red Team Decision Memo<br/><i>(Fatal Risks / Advantages / Uncertainties)</i>"]
         end
 
-        subgraph S_RAT["Riskiest Assumption Test (RAT)"]
-            EXP_MOM["The Mom Test"]
+        subgraph C_VALID["Riskiest Assumption Testing (RAT)"]
+            EXP_MOM["Mom Test Discovery"]
             EXP_CON["Concierge MVP"]
-            EXP_SMK["Smoke Page"]
+            EXP_SMK["Smoke Test Page"]
             EXP_SPK["Technical Spike"]
         end
 
-        subgraph S_EVID["Evidence Gate"]
-            EVAL["Evaluate Confidence & WTP"]
-            GATE_PASS["RAT Passed (Skin in Game)"]
-            GATE_PIVOT["Pivot Signal (Re-anchor)"]
-            GATE_FAIL["RAT Failed (Zero WTP)"]
+        subgraph C_GATE["Multi-Tier Decision Gate"]
+            DEC_EVAL["Evaluate Problem vs Solution Fit"]
+            KILL_SOL["Kill Solution (Re-anchor)"]
+            KILL_WDG["Kill Wedge (Pivot ICP)"]
+            KILL_VEN["Kill Venture (Terminal)"]
+            ADVANCE["Advance to Specification"]
         end
 
-        subgraph S_PROD["Product & UX Architecture"]
-            PRFAQ["Lightweight PR/FAQ"]
-            WORKFLOW["One Core Workflow & Appetite"]
-            ANTISLOP["Anti-AI-Slop UX Tokens"]
+        subgraph C_PROD["Product & UX Architecture"]
+            PRFAQ["Lightweight PR/FAQ & 1-Sentence Pitch"]
+            WORKFLOW["One Core Workflow & 1-2 Wk Appetite"]
+            ANTISLOP["Anti-AI-Slop UX & Design Tokens"]
             WALK_SPEC["Walking Skeleton Spec"]
         end
 
-        subgraph S_PRE["Pre-Mortem Gate"]
-            PRE_MORTEM["3 Failure Modes & Kill Criteria"]
+        subgraph C_BUILD["Engineering & First Customer"]
+            PRE_MORTEM["Pre-Mortem (3 Failure Modes)"]
+            WALK_BUILD["Walking Skeleton Build (Task 0)"]
+            FIRST_CUST["First Customer Hand-off"]
+            ITER_SLICE["Vertical Slice Iteration"]
         end
 
-        subgraph S_BUILD["In-Development Loop"]
-            WALK_BUILD["Walking Skeleton Build"]
-            FIRST_CUST["First Customer Gate"]
-            ITER_SLICE["Iterate Vertical Slice"]
+        subgraph C_SCALE["Growth & Metrics"]
+            DISTRIB["Distribution Engine (pSEO / Viral Video)"]
+            METRICS["Cash Accounting & North Star Loop"]
         end
+    end
 
-        subgraph S_GROWTH["Distribution & Metrics"]
-            GROWTH["Distribution Engine (pSEO / Viral)"]
-            METRICS["Metrics & Cash Loop"]
-        end
-
-        TERMINAL_KILL(["🛑 TERMINAL: KILL"])
-        TERMINAL_SCALE(["🚀 SCALE: DOUBLE DOWN"])
+    subgraph L3["LAYER 3: EVIDENCE & STATE INFRASTRUCTURE (.microsaas/)"]
+        STATE_JSON[("state.json<br/>Operational Structured State")]
+        LEDGER_MD[("source-ledger.md<br/>4D Evidence History")]
+        DECISION_MD[("decision-log.md<br/>Audited Decision History")]
     end
 
     %% Internal execution graph flows
-    T1 --> S_RESEARCH
-    T2 --> S_RESEARCH
-    T3 --> S_PROD
-    T4 --> S_GROWTH
+    T_RAW --> C_RESEARCH
+    T_PROB --> C_RESEARCH
+    T_TRAC --> C_PROD
+    T_CODE -->|"Audit: Lacks WTP"| C_VALID
+    T_CODE -->|"Audit: Has Paying Users"| C_SCALE
 
-    MOAT --> RED_PASS
-    MOAT --> RED_TRAP
-    RED_TRAP -->|"Backtrack & Pivot Wedge"| S_TRIAGE
-    RED_PASS --> S_RAT
+    RED_AUDIT --> RED_MEMO
+    RED_MEMO -->|"Fatal Trap"| C_TRIAGE
+    RED_MEMO -->|"Unresolved Risk"| C_VALID
 
-    EXP_MOM --> EVAL
-    EXP_CON --> EVAL
-    EXP_SMK --> EVAL
-    EXP_SPK --> EVAL
+    EXP_MOM --> DEC_EVAL
+    EXP_CON --> DEC_EVAL
+    EXP_SMK --> DEC_EVAL
+    EXP_SPK --> DEC_EVAL
 
-    EVAL --> GATE_PASS
-    EVAL --> GATE_PIVOT
-    EVAL --> GATE_FAIL
+    DEC_EVAL --> ADVANCE
+    DEC_EVAL --> KILL_SOL -->|"Try Different Solution"| C_PROD
+    DEC_EVAL --> KILL_WDG -->|"Try Different Segment"| C_TRIAGE
+    DEC_EVAL --> KILL_VEN
 
-    GATE_FAIL --> TERMINAL_KILL
-    GATE_PIVOT -->|"Re-anchor Solution"| S_TRIAGE
-    GATE_PASS --> S_PROD
-
-    PRFAQ --> WORKFLOW --> ANTISLOP --> WALK_SPEC --> PRE_MORTEM --> WALK_BUILD
+    ADVANCE --> PRFAQ --> WORKFLOW --> ANTISLOP --> WALK_SPEC --> PRE_MORTEM --> WALK_BUILD
     WALK_BUILD --> FIRST_CUST
-    FIRST_CUST <-->|"Customer Feedback Loop"| ITER_SLICE
-    FIRST_CUST -->|"Core Value Realized"| GROWTH
-
-    GROWTH --> METRICS
-    METRICS -->|"Double Down"| TERMINAL_SCALE
-    METRICS -->|"Pivot"| S_TRIAGE
-    METRICS -->|"Kill"| TERMINAL_KILL
+    FIRST_CUST <--> ITER_SLICE
+    FIRST_CUST -->|"Proven Real Value"| DISTRIB
+    DISTRIB --> METRICS
 
     %% Governor Supervisory Routing (Downlink)
-    ROUTER -.->|"Direct Route"| S_TRIAGE
-    ROUTER -.->|"Direct Route"| S_RESEARCH
-    ROUTER -.->|"Direct Route"| S_RAT
-    ROUTER -.->|"Direct Route"| S_PROD
-    ROUTER -.->|"Direct Route"| S_BUILD
-    ROUTER -.->|"Direct Route"| S_GROWTH
+    ROUTER -.->|"Direct Route"| C_TRIAGE
+    ROUTER -.->|"Direct Route"| C_RESEARCH
+    ROUTER -.->|"Direct Route"| C_VALID
+    ROUTER -.->|"Direct Route"| C_PROD
+    ROUTER -.->|"Direct Route"| C_BUILD
+    ROUTER -.->|"Direct Route"| C_SCALE
 
-    %% Execution Graph State/Evidence Streaming (Uplink)
-    EXEC -.->|"Evidence Updates & Living Memory (.microsaas/)"| SENSOR
-    EXEC -.->|"Strategic Contradictions & Platform Shifts"| CONTRA
+    %% Layer 3 Cross-Layer Persistence
+    L2 <-->|"Reads & Commits State"| L3
+    L1 <-->|"Supervises & Updates"| L3
 ```
 
 ---
@@ -165,18 +160,22 @@ stateDiagram-v2
         ContextSensing --> RouteA_VagueIdea: Raw pain / No clarity
         ContextSensing --> RouteB_KnownProblem: Clear pain / No solution
         ContextSensing --> RouteC_ExistingTraction: Already paying users / Productizing service
-        ContextSensing --> RouteD_WorkingCode: Existing code / Needs distribution
+        ContextSensing --> RouteD_WorkingCode: Existing code / Audit Evidence
+        RouteD_WorkingCode --> EvidenceAudit
+        EvidenceAudit --> RouteD_Validated: Paying customers verified
+        EvidenceAudit --> RouteD_Unverified: No WTP evidence ➔ Needs RAT
     }
 
     RouteA_VagueIdea --> DiscoveryEngine: Explore JTBD & Mine Complaints
     RouteB_KnownProblem --> CompetitiveRedTeam: Audit Moats & Platform Traps
     RouteC_ExistingTraction --> OutcomeFraming: Fast-Forward to PR/FAQ & Scope
-    RouteD_WorkingCode --> GrowthEngine: Jump to Distribution & pSEO
+    RouteD_Validated --> GrowthEngine: Jump to Distribution & pSEO
+    RouteD_Unverified --> RiskiestAssumptionTest: Formulate RAT first!
 
     state CompetitiveRedTeam {
-        [*] --> MoatAnalysis
-        MoatAnalysis --> PassClear: Moat >= 18/30
-        MoatAnalysis --> FatalTrapDetected: Platform TOS / Incumbent Feature Trap
+        [*] --> RedTeamAudit
+        RedTeamAudit --> PassClear: Asymmetric Wedge Verified
+        RedTeamAudit --> FatalTrapDetected: Platform TOS / Incumbent Feature Trap
     }
 
     FatalTrapDetected --> DiscoveryEngine: Backtrack & Pivot the Wedge
@@ -197,14 +196,16 @@ stateDiagram-v2
 
     state EvidenceGate {
         [*] --> EvaluateEvidence
-        EvaluateEvidence --> RAT_Failed: Zero WTP / Indifference
-        EvaluateEvidence --> RAT_Passed: Real spending / Skin in the game
-        EvaluateEvidence --> PivotSignal: Love problem, hate proposed solution
+        EvaluateEvidence --> KillSolution: Problem real, solution rejected
+        EvaluateEvidence --> KillWedge: Problem real, segment price-sensitive
+        EvaluateEvidence --> KillVenture: Zero WTP / Free tools suffice
+        EvaluateEvidence --> AdvanceToProduct: Real spending / Skin in the game
     }
 
-    RAT_Failed --> [*]: KILL (Save months of wasted code)
-    PivotSignal --> DiscoveryEngine: Re-anchor Solution
-    RAT_Passed --> OutcomeFraming: Define Product & Appetite
+    KillVenture --> [*]: TERMINAL KILL (Save months of wasted code)
+    KillWedge --> DiscoveryEngine: Pivot ICP Segment
+    KillSolution --> OutcomeFraming: Redesign Delivery Format
+    AdvanceToProduct --> OutcomeFraming: Define Product & Appetite
 
     state OutcomeFraming {
         [*] --> PRFAQ
@@ -231,31 +232,40 @@ stateDiagram-v2
 
 ## ⚖️ Meta-Governance & Decision Engine (Elite 10/10 Architecture)
 
-To ensure execution matches architectural intent, `microsaas-hub` enforces four advanced governance systems:
+To ensure execution matches architectural intent, `microsaas-hub` enforces an advanced governance framework:
 
-### 1. Calibrated Confidence Scoring (L1–L4)
-Distinguishes empirical financial proof from casual internet comments:
-* **`[CONF=1.0]` (L4 - Empirical Reality):** Live Stripe payouts, verified bank transactions, executed test suites (exit code 0), signed pilot contracts.
-* **`[CONF=0.7]` (L3 - High Primary Signal):** Direct quotes from *Mom Test* interviews on past spending, official platform API docs/TOS, competitor checkout prices.
-* **`[CONF=0.4]` (L2 - Secondary Market Signal):** G2/Trustpilot reviews, Reddit complaint threads, search volume trends.
-* **`[CONF=0.1]` (L1 - Hypothesis / Fluff):** Survey promises ("I would buy this"), founder assumptions, LLM speculation.
-* *Rule:* No strategic **GO** recommendation can be grounded on evidence with aggregated confidence $< 0.70$.
+### 1. The 4-Dimensional Evidence Model
+Rather than a single arbitrary score, every claim is evaluated across 4 dimensions:
+* **Source Reliability:** Origin trustworthiness (High: direct payment gateway / official API; Med: review sites; Low: anonymous forum rants).
+* **Evidence Strength:** Directness of support (Direct cash payment vs. indirect usage vs. hypothetical survey promise).
+* **Recency:** Fresh (< 6 months) vs. stale (> 12 months, pre-platform update).
+* **Independence:** Independent multi-source validation vs. circular echo chambers.
+* *Crucial Rule:* Evidence that a problem exists is **NOT** evidence that a proposed solution works. Both must be validated independently.
 
-### 2. Contradiction Detection & Strategic Reconciliation
-When newly discovered research or test data conflicts with earlier premises (e.g. Discovery assumed zero competitors, but Research uncovered an active \$1M ARR incumbent):
+### 2. The 3-Tier Precision Termination Model
+Avoids premature venture death by diagnosing the exact failure point:
+* **Kill the Solution:** The problem is urgent, but the customer rejects your specific software format $\rightarrow$ Keep ICP and problem; redesign delivery (Concierge, plugin, or API).
+* **Kill the Wedge:** The problem is real, but the initial niche is too small or price-sensitive $\rightarrow$ Keep core technology; pivot to an enterprise or high-budget vertical.
+* **Kill the Venture:** The problem is minor, workarounds are free, and zero willingness to pay exists anywhere $\rightarrow$ Full terminal shutdown. Save months of wasted coding.
+
+### 3. Autonomy & Permission Matrix
+* **Tier 1: Autonomous (Execute & Report):** Web search, competitor mining, drafting PR/FAQs, running local tests, updating `.microsaas/state.json`.
+* **Tier 2: Notification Gate (Propose & Proceed):** Proposing RAT experiments, sizing development appetite, selecting UI design archetypes.
+* **Tier 3: Explicit Founder Approval (Hard Stop):** Terminating an idea (Kill Solution/Wedge/Venture), changing strategic positioning, spending real money (ads, domains), and deploying to production.
+
+### 4. Opportunity Cost & Experiment Prioritization Engine
+Before launching multi-day work, the Meta-Governor evaluates:
+$$\text{Priority Score} = \frac{\text{Expected Commercial Value} \times \text{Uncertainty Reduction}}{\text{Time to Evidence} \times \text{Resource Cost}}$$
+> *"Is this the best use of the founder's next 4 hours?"* A 2-hour Concierge test that eliminates fatal uncertainty beats a 3-week spec and build sprint every time.
+
+### 5. Contradiction Detection & Strategic Reconciliation
+When newly discovered research or test data conflicts with earlier premises:
 * The Hub flags `⚠️ [CONTRADICTION DETECTED]`.
-* Progression is immediately frozen until an explicit [Strategic Reconciliation Memo](templates/strategic_reconciliation_memo.md) is appended to `.microsaas/decision-log.md` detailing whether to pivot the wedge, trim scope, or kill the idea.
+* Progression is frozen until an explicit [Strategic Reconciliation Memo](templates/strategic_reconciliation_memo.md) is appended to `.microsaas/decision-log.md` deciding whether to pivot the wedge, redesign the solution, or kill the venture.
 
-### 3. Tool Execution Verification Guardrails
-Prevents hallucinated execution:
-* Research claims must link directly to primary URLs recorded in `source-ledger.md`.
-* Terminal commands and test suites must return exit code `0` with verified output logs.
-* Generated deliverables must exist on disk before state transitions are confirmed.
-
-### 4. Routing Hysteresis & Anti-Oscillation Damping
-Prevents chaotic skill jumping on minor conversational noise:
+### 6. Routing Hysteresis & Anti-Oscillation Damping
 * **Contextual Inertia:** Clarifying questions and "what-if" musings are answered within the active skill without resetting state.
-* **Materiality Threshold:** Changing the active lifecycle stage requires completing a gate artifact or verifying a high-confidence ($\ge 0.7$) pivot/kill trigger.
+* **Materiality Threshold:** Changing the active lifecycle stage requires completing a formal gate artifact or verifying a high-confidence pivot/kill trigger.
 * **Circuit Breaker:** If an idea bounces between any two skills $\ge 3$ times without producing new evidence, the Hub halts the loop and forces a binary 48-hour resolution decision.
 
 ---
@@ -438,8 +448,10 @@ Also explore the [**40 Micro-SaaS Vetted Ideas Catalog**](docs/40_micro_saas_ide
 ## 📑 Ready-to-Use Founder Templates
 
 Copy-paste templates located in [`templates/`](templates/):
+* `venture_state_schema.json`: Structured operational venture state schema (Layer 3).
+* `opportunity_cost_evaluation.md`: 4-Hour Acid Test and experiment prioritization.
 * `opportunity_scoring_rubric.md`: 7-dimension opportunity evaluation (/35).
-* `competitive_audit_template.md`: Competitor matrix and 6-moat scorecard (/30).
+* `competitive_audit_template.md`: Red Team Strategic Decision Memo (Fatal risks, asymmetric wedge).
 * `strategic_reconciliation_memo.md`: Framework for resolving contradictions between new data and prior assumptions.
 * `riskiest_assumption_test.md`: Riskiest Assumption Testing (RAT) and experiment selector.
 * `mom_test_script_template.md`: Customer discovery interview script.
