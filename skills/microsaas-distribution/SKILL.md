@@ -115,10 +115,39 @@ A micro-SaaS must optimize for **zero-sales-call impulse checkout**:
 
 ---
 
+## 🎯 Part 5: StoryBrand Micro-SaaS Landing Page Architecture
+
+Technical founders often describe *how the software works* instead of positioning the customer as the hero. Micro-SaaS distribution integrates Donald Miller's **StoryBrand SB7 Framework** (via the installed `storybrand` skill and [`templates/storybrand_micro_saas_copy.md`](templates/storybrand_micro_saas_copy.md)):
+
+```text
+┌────────────────────────────────────────────────────────┐
+│             THE 5-SECOND "GRUNT TEST" HERO             │
+├────────────────────┬───────────────────────────────────┤
+│ 1. WHAT DO YOU DO? │ Plain English, zero jargon        │
+├────────────────────┼───────────────────────────────────┤
+│ 2. HOW DOES IT HELP│ Visceral benefit, time saved, or  │
+│    MY LIFE?        │ emotional identity fulfilled      │
+├────────────────────┼───────────────────────────────────┤
+│ 3. WHAT DO I DO?   │ One bold, high-contrast CTA       │
+└────────────────────┴───────────────────────────────────┘
+```
+
+### The 7-Part StoryBrand Flow for Micro-SaaS:
+1. **The Hero (Customer):** Focus on their specific aspirational desire.
+2. **The Problem:** Define external hassle, internal emotion, and the villain (routine, generic gifts, manual toil).
+3. **The Guide (Your Tool):** Show micro-empathy and technical credibility.
+4. **The 3-Step Plan:** Keep onboarding to 3 frictionless steps (Input $\rightarrow$ Preview $\rightarrow$ Cherish/Brag).
+5. **Call to Action:** Clear direct CTA ("Start Free Preview") + low-friction transitional CTA.
+6. **Avoid Failure:** Highlight the cost of sticking with boring status quo alternatives.
+7. **End in Success:** Paint the picture of the high-status outcome or joyful moment.
+
+---
+
 ## 📄 Required Output Artifacts
 
 Save in the project repository:
 1. `launch-plan.md` (Target platforms, post copy, founder story, asset links).
-2. `content-calendar.md` (5 short-form video hooks, scripts, and audio directions).
-3. `pricing-model.md` (Tiers, margins, Gelato/Printful cost breakdowns, Stripe config).
-4. Human Sign-Off Checkpoint before publishing external posts or going live.
+2. `landing-page-copy.md` (StoryBrand SB7 structured copy from hero to FAQ).
+3. `content-calendar.md` (5 short-form video hooks, scripts, and audio directions).
+4. `pricing-model.md` (Tiers, margins, Gelato/Printful cost breakdowns, Stripe config).
+5. Human Sign-Off Checkpoint before publishing external posts or going live.
